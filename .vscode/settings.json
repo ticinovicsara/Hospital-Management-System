@@ -1,0 +1,7 @@
+{
+    "files.associations": {
+        "patient.h": "c",
+        "read_files.h": "c"
+    },
+    "C_Cpp.errorSquiggles": "disabled"
+}
