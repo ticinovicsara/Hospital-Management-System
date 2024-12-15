@@ -38,7 +38,7 @@ typedef struct HashTable{
 HashTable* CreateHashTable(int size);
 void InsertPatient(HashTable* ht, Patientptr patient);
 Patientptr SearchPatientByID(HashTable* ht, const char* id);
-void DeletePatient(HashTable* ht, const char* id);
+void DeletePatient(HashTable* ht, const char* id, const char* surname);
 void ListAllPatients(HashTable* ht);
 void SearchPatientByName(HashTable* ht, char* name, char* surname);
 

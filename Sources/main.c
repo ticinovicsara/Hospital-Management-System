@@ -10,7 +10,5 @@ int main(){
 
     ListAllPatients(hash_table);
 
-    PrintDoctors(root);
-
     return 0;
 }
