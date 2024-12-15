@@ -5,7 +5,6 @@ HEADERS_DIR = Headers
 OBJECTS_DIR = Objects
 
 CC = gcc
-CFLAGS = -Wall -I$(HEADERS_DIR)
 
 SOURCES = $(SOURCES_DIR)/main.c \
           $(SOURCES_DIR)/read_files.c \
@@ -18,13 +17,14 @@ SOURCES = $(SOURCES_DIR)/main.c \
           $(SOURCES_DIR)/menu_doctor.c \
           $(SOURCES_DIR)/menu_patient.c
 
-OBJECTS = $(patsubst %.c, $(OBJECTS_DIR)/%.o, $(notdir $(SOURCES)))
+
+OBJECTS = $(patsubst $(SOURCES_DIR)/%.c, $(OBJECTS_DIR)/%.o, $(SOURCES))
 
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(EXEC)
 
 $(OBJECTS_DIR)/%.o: $(SOURCES_DIR)/%.c
-	$(CC) $(CFLAGS) -c $< -o $@
+	$(CC) -c -I$(HEADERS_DIR) $< -o $@
 
 clean:
 	rm -rf $(OBJECTS_DIR)/*.o $(EXEC)
