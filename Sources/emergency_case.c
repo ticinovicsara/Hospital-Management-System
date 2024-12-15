@@ -1,7 +1,10 @@
 #include "../Headers/emergency.h"
+#include <stdlib.h>
+#include <stddef.h>
+#include <stdio.h>
 
-void initializeQueue(PriorityQueue** pq) {
-    (*pq)->size = 0;
+void initializeQueue(PriorityQueue* pq) {
+    pq->size = 0;
 }
 
 void upheap(PriorityQueue* pq, int index) {
@@ -21,8 +24,11 @@ void upheap(PriorityQueue* pq, int index) {
 
 void enqueue(PriorityQueue* pq, EmergencyCase newCase) {
     if (pq->size >= MAX_QUEUE_SIZE) {
-        printf("Red je pun!\n");
-        return;
+        pq->queue = (EmergencyCase*)realloc(pq->queue, sizeof(EmergencyCase) * (pq->size + 1));
+        if (pq->queue == NULL) {
+            printf("Nemoguce alocirati memoriju za prosirenje reda\n");
+            return;
+        }
     }
 
     pq->queue[pq->size] = newCase;
@@ -58,7 +64,6 @@ void downheap(PriorityQueue* pq, int index) {
 
 EmergencyCase dequeue(PriorityQueue* pq) {
     if (pq->size == 0) {
-        printf("Red je prazan!\n");
         EmergencyCase empty = {0};
         return empty;
     }
@@ -75,7 +80,6 @@ EmergencyCase dequeue(PriorityQueue* pq) {
 
 EmergencyCase peek(PriorityQueue* pq) {
     if (pq->size == 0) {
-        printf("Red je prazan!\n");
         EmergencyCase empty = {0};
         return empty;
     }

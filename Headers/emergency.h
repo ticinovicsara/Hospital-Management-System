@@ -10,13 +10,13 @@ typedef struct _emergencyCase{
 }EmergencyCase;
 
 typedef struct {
-    EmergencyCase queue[MAX_QUEUE_SIZE];
     int size;
+    EmergencyCase* queue;
 } PriorityQueue;
 
 
 void manageEmergencyCase();
-void initializeQueue(PriorityQueue** pq);
+void initializeQueue(PriorityQueue* pq);
 void upheap(PriorityQueue* pq, int index);
 void enqueue(PriorityQueue* pq, EmergencyCase newCase);
 void downheap(PriorityQueue* pq, int index);

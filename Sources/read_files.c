@@ -2,6 +2,7 @@
 #include "../Headers/patient.h"
 #include "../Headers/doctor.h"
 #include "../Headers/appointment.h"
+#include "../Headers/emergency.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -88,4 +89,19 @@ void ReadDoctors(SpecializationNodePtr* root){
     }
 
     fclose(fp);
+}
+
+void ReadEmergencyCases(PriorityQueue* pq){
+    FILE* fp = fopen("Seed/emergency_cases.txt", "r");
+    if (!fp) {
+        printf("Nemoguce otvoriti datoteku 'emergency.txt'\n");
+        return;
+    }
+
+    EmergencyCase newCase;
+    while (fscanf(fp, "%d,%99[^,],%d\n", &newCase.id, newCase.description, &newCase.priority) == 3) {
+        enqueue(pq, newCase);
+    }
+
+    fclose(fp); 
 }

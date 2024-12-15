@@ -1,6 +1,11 @@
 #include <stdio.h>
+#include <string.h>
 #include "../Headers/patient.h"
 #include "../Headers/help-functions.h"
+
+void addPatient(HashTable ht);
+void deletePatient(HashTable ht);
+void searchPatients(HashTable ht);
 
 void showPatientMenu(HashTable* hash_table){
     clearScreen();
@@ -17,13 +22,13 @@ void showPatientMenu(HashTable* hash_table){
     while(1){
         switch (option) {
             case 1:
-                addpatient(hash_table);
+                addPatient(*hash_table);
                 break;
             case 2:
-                deletePatient(hash_table);
+                deletePatient(*hash_table);
                 break;
             case 3:
-                searchPatients(hash_table);
+                searchPatients(*hash_table);
                 break;
             case 4:
                 //reserveAppointment();
@@ -40,15 +45,15 @@ void showPatientMenu(HashTable* hash_table){
 }
 
 
-void addpatient(HashTable* ht){
+void addPatient(HashTable ht){
     AddPatient(ht);
 }
 
-void deletePatient(HashTable* ht){
-    DeletePatientBySurname(ht);
+void deletePatient(HashTable ht){
+    DeletePatientBySurname(&ht);
 }
 
-void searchPatients(HashTable* ht){
+void searchPatients(HashTable ht){
     while(1){
         clearScreen();
         printf("Pretrazi pacijenta po: \n");
@@ -70,7 +75,7 @@ void searchPatients(HashTable* ht){
                 }
             } while (strlen(id) == 0);
 
-            SearchPatientByID(ht, id);
+            SearchPatientByID(&ht, id);
             break;
         }
         else if (option == 2) {
@@ -79,7 +84,7 @@ void searchPatients(HashTable* ht){
 
             inputNameAndSurname(name, surname);
 
-            SearchPatientByName(ht, name, surname);
+            SearchPatientByName(&ht, name, surname);
             break;
         }
         else if(option == 0){

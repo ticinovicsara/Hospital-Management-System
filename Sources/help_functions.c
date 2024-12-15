@@ -7,6 +7,13 @@
 #include "../Headers/patient.h"
 #include "../Headers/doctor.h"
 #include "../Headers/help-functions.h"
+#include "../Headers/emergency.h"
+
+void clearScreen() {
+    for (int i = 0; i < 50; i++) {
+        printf("\n");
+    }
+}
 
 bool stringIsValid(char* string){
     for (int i = 0; i < strlen(string); i++) {
@@ -97,3 +104,8 @@ void ListAllDoctors(SpecializationNodePtr root){
     ListAllDoctors(root->left);
     ListAllDoctors(root->right);
 }
+
+
+// void ListAllEmergencyCases(PriorityQueue pq){
+
+// }

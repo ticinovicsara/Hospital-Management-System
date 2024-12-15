@@ -4,11 +4,7 @@
 #include <stdio.h>
 #include <string.h>
 
-void clearScreen() {
-    system("cls");
-}
-
-void AddPatient(HashTable* ht){
+void AddPatient(HashTable ht){
     clearScreen();
     printf("\nUnesite podatke za novog pacijenta:\n");
 
@@ -36,7 +32,7 @@ void AddPatient(HashTable* ht){
 
     newPatient->history = NULL;
 
-    InsertPatient(ht, newPatient);
+    InsertPatient(&ht, newPatient);
 
     printf("Pacijent uspjesno kreiran.\n");
 }

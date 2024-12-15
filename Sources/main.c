@@ -16,15 +16,19 @@ int main(){
     SpecializationNodePtr root = NULL;
     ReadDoctors(&root);
 
-    PriorityQueue* pq = NULL;
-    initializeQueue(&pq);
+    PriorityQueue* pq = (PriorityQueue*)malloc(sizeof(PriorityQueue));
+    if (pq == NULL) {
+        printf("nemoguce alocirati memoriju\n");
+        exit(1);
+    }
+    initializeQueue(pq);
     ReadEmergencyCases(pq);
 
     int option;
 
     while (1) {
         clearScreen();
-        printf("\n===== Hospital Management System =====\n");
+        printf("\n===== Hospital Management System =====\n\n");
         printf("Dobrodosli! Za nastavak odaberite radnju:\n");
         printf("1 - Pacijenti\n");
         printf("2 - Doktori\n");
@@ -51,9 +55,15 @@ int main(){
         }
     }
 
+    free(pq);
+    free(root);
     return 0;
 }
 
 void manageEmergencyCases(PriorityQueue* pq){
+    if (pq == NULL || pq->size == 0) {
+        printf("Red je prazan ili nije inicijalizovan.\n");
+        return;
+    }
     manageEmergencyCase(pq);
 }

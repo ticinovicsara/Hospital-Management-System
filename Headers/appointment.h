@@ -1,6 +1,6 @@
 #ifndef APPOINTMENT_H
 #define APPOINTMENT_H
-#include <patient.h>
+#include "patient.h"
 
 typedef struct _appointment{
     int id;
