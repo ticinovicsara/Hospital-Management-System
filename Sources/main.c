@@ -7,7 +7,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-
 void manageEmergencyCases(PriorityQueue* pq);
 
 int main(){
@@ -24,11 +23,12 @@ int main(){
     int option;
 
     while (1) {
+        clearScreen();
         printf("\n===== Hospital Management System =====\n");
         printf("Dobrodosli! Za nastavak odaberite radnju:\n");
         printf("1 - Pacijenti\n");
         printf("2 - Doktori\n");
-        printf("3 - Upravljanje hitnim slucajevima\n");
+        printf("3 - Hitni slucajevi\n");
         printf("0 - Izlaz\n");
         printf("\n: ");
         scanf("%d", &option);

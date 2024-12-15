@@ -24,11 +24,8 @@ typedef struct _specializationNode{
 
 
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments);
-int max(int a, int b);
-int getHeight(SpecializationNodePtr node);
-int getBalance(SpecializationNodePtr node);
-SpecializationNodePtr rotate(SpecializationNodePtr root, int direction);
-SpecializationNodePtr rightRotation(SpecializationNodePtr root);
-SpecializationNodePtr leftRotation(SpecializationNodePtr root);
+SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname);
+SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
+DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname);
 
 #endif

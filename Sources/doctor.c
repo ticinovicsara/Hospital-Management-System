@@ -3,11 +3,17 @@
 #include <string.h>
 #include <stdlib.h>
 
+SpecializationNodePtr balanceSpecializationNode(SpecializationNodePtr root);
+SpecializationNodePtr rightRotation(SpecializationNodePtr root);
+SpecializationNodePtr leftRotation(SpecializationNodePtr root);
+int max(int a, int b);
+int getHeight(SpecializationNodePtr node);
+int getBalance(SpecializationNodePtr node);
+
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments){
     if(!root){
         SpecializationNodePtr node = (SpecializationNodePtr)malloc(sizeof(SpecializationNode));
         if(!node){
-            printf("Neuspjesna alokacija node za doktora\n");
             return NULL;
         }
         
@@ -18,7 +24,6 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
 
         DoctorPtr newDoctor = (DoctorPtr)malloc(sizeof(Doctor));
         if (!newDoctor) {
-            printf("Neuspjesna alokacija za doktora\n");
             free(node);
             return NULL;
         }
@@ -36,7 +41,6 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
     }
 
     if (specialization == NULL || name == NULL || surname == NULL) {
-        printf("Error: One of the strings is NULL.\n");
         return NULL;
     }
 
@@ -50,7 +54,6 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
     else {
         DoctorPtr newDoctor = (DoctorPtr)malloc(sizeof(Doctor));
         if(!newDoctor){
-            printf("Neuspjesna alokacija za doktora\n");
             return root;
         }
 
@@ -62,23 +65,104 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
         root->doctors = newDoctor;
         return root;
     }
+    
+    root = balanceSpecializationNode(root);
+    return root;
+}
+
+DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname) {
+    if (!root) {
+        return NULL;
+    }
+
+    if (strcmp(name, root->specialization) < 0) {
+        SearchDoctorByName(root->left, name, surname);
+    }
+    else if (strcmp(name, root->specialization) > 0) {
+        SearchDoctorByName(root->right, name, surname);
+    }
+    else {
+        DoctorPtr current = root->doctors;
+        while (current) {
+            if (strcmp(current->name, name) == 0 && strcmp(current->surname, surname) == 0) {
+                return current;
+            }
+            current = current->next;
+        }
+    }
+
+    return NULL;
+}
+
+SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
+    if (!root) {
+        return NULL;
+    }
+
+    if (strcmp(specialization, root->specialization) < 0) {
+        return SearchDoctorBySpecialization(root->left, specialization);
+    }
+    else if (strcmp(specialization, root->specialization) > 0) {
+        return SearchDoctorBySpecialization(root->right, specialization);
+    }
+    else {
+        return root;
+    }
+}
+
+SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname) {
+    if (!root) {
+        return NULL;
+    }
+
+    if (strcmp(name, root->specialization) < 0) {
+        root->left = DeleteDoctor(root->left, name, surname);
+    }
+    else if (strcmp(name, root->specialization) > 0) {
+        root->right = DeleteDoctor(root->right, name, surname);
+    }
+    else {
+        DoctorPtr prev = NULL;
+        DoctorPtr current = root->doctors;
+
+        while (current != NULL) {
+            if (strcmp(current->name, name) == 0 && strcmp(current->surname, surname) == 0) {
+                if (prev) {
+                    prev->next = current->next;
+                } else {
+                    root->doctors = current->next;
+                }
+
+                free(current);
+                printf("Doktor %s %s obrisan\n", name, surname);
+                return root;
+            }
+            prev = current;
+            current = current->next;
+        }
+    }
+
+    root = balanceSpecializationNode(root);
+    return root;
+}
 
 
+SpecializationNodePtr balanceSpecializationNode(SpecializationNodePtr root) {
     root->height = 1 + max(getHeight(root->left), getHeight(root->right));
 
     int balance = getBalance(root);
 
-    if (balance > 1 && strcmp(specialization, root->left->specialization) < 0) {
+    if (balance > 1 && getBalance(root->left) >= 0) {
         return rightRotation(root);
     }
-    if (balance < -1 && strcmp(specialization, root->right->specialization) > 0) {
+    if (balance < -1 && getBalance(root->right) <= 0) {
         return leftRotation(root);
     }
-    if (balance > 1 && strcmp(specialization, root->left->specialization) > 0) {
+    if (balance > 1 && getBalance(root->left) < 0) {
         root->left = leftRotation(root->left);
         return rightRotation(root);
     }
-    if (balance < -1 && strcmp(specialization, root->right->specialization) < 0) {
+    if (balance < -1 && getBalance(root->right) > 0) {
         root->right = rightRotation(root->right);
         return leftRotation(root);
     }
