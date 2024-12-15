@@ -1,0 +1,5 @@
+Cardiology,Marko,Maric,10
+Dermatology,Petar,Peric,3
+Dentist,Jure,Juric,8
+Cardiology,Ana,Anic,5
+Neurology,Luka,Lukic,2

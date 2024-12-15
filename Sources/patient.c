@@ -101,16 +101,3 @@ void DeletePatient(HashTable* ht, const char* id){
     }
     printf("Pacijent sa ID %s nije pronadjen.\n", id);
 }
-
-void ListAllPatients(HashTable* ht){
-    for(int i=0; i < ht->size; i++){
-        NodePosition current = ht->buckets[i];
-
-        printf("\nBucket %d: \n", i);
-        while(current != NULL){
-            Patientptr p = current->patient;
-            printf("\tID: %-5s\tIme: %-10s %-10s\tDatum Rodjenja: %-12s\n", p->id, p->name, p->surname, p->birthDate);
-            current = current->next;
-        }
-    }
-}

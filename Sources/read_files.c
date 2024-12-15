@@ -1,5 +1,7 @@
 #include "../Headers/read_files.h"
 #include "../Headers/patient.h"
+#include "../Headers/doctor.h"
+#include "../Headers/appointment.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
@@ -61,5 +63,29 @@ void ReadPatients(HashTable* ht){
         }
         InsertPatient(ht, newPatient);
     }
+    fclose(fp);
+}
+
+void ReadDoctors(SpecializationNodePtr* root){
+    FILE* fp = fopen("Seed/doctors.txt", "r");
+    if(!fp){
+        printf("Datoteka 'doctors.txt' se ne moze otvoriti\n");
+        return;
+    }
+
+    char buffer[BUFFER_SIZE];
+
+    while(fgets(buffer, BUFFER_SIZE, fp)){
+        char specialization[100], fname[100], lname[100];
+        int availableAppointments;
+
+        if(sscanf(buffer,  "%99[^,], %99[^,], %99[^,], %d", specialization, fname, lname, &availableAppointments) == 4){
+            *root = InsertDoctor(*root, specialization, fname, lname, availableAppointments);
+        }
+        else{
+            printf("pogreska pri citanju datoteke\n");
+        }
+    }
+
     fclose(fp);
 }

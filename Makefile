@@ -7,7 +7,7 @@ SEED_DIR = Seed
 CC = gcc
 CFLAGS = -Wall -I$(HEADERS_DIR)
 
-SOURCES = $(SOURCES_DIR)/main.c $(SOURCES_DIR)/patient.c $(SOURCES_DIR)/read_files.c
+SOURCES = $(SOURCES_DIR)/main.c $(SOURCES_DIR)/patient.c $(SOURCES_DIR)/read_files.c $(SOURCES_DIR)/help_functions.c $(SOURCES_DIR)/doctor.c
 
 OBJECTS = $(SOURCES:.c=.o)
 
