@@ -78,13 +78,13 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id){
     return NULL; 
 }
 
-void DeletePatient(HashTable* ht, const char* id){
+void DeletePatient(HashTable* ht, const char* id, const char* surname){
     int index = hash(id, "", ht->size);
     NodePosition current = ht->buckets[index];
     NodePosition prev = NULL;
 
     while(current != NULL){
-        if(strcmp(current->patient->id, id) == 0){
+        if(strcmp(current->patient->id, id) == 0 && strcmp(current->patient->surname, surname) == 0){
             if(prev == NULL){
                 ht->buckets[index] = current->next;
             }
@@ -94,6 +94,7 @@ void DeletePatient(HashTable* ht, const char* id){
 
             free(current->patient);
             free(current);
+            printf("Pacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
             return;
         }
         prev = current;
