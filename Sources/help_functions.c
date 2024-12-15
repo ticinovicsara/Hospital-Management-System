@@ -2,10 +2,51 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stddef.h>
+#include <stdbool.h>
+#include <ctype.h>
 #include "../Headers/patient.h"
 #include "../Headers/doctor.h"
 #include "../Headers/help-functions.h"
 
+bool stringIsValid(char* string){
+    for (int i = 0; i < strlen(string); i++) {
+        if (isdigit(string[i])) {
+            return false;
+        }
+    }
+    return true;
+}
+
+
+bool isLeapYear(int year) {
+    return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);
+}
+
+bool isValidDate(const char* date) {
+    if (strlen(date) != 10 || date[2] != '.' || date[5] != '.') {
+        return false;
+    }
+
+    int day, month, year;
+
+    if (sscanf(date, "%2d.%2d.%4d", &day, &month, &year) != 3) {
+        return false;
+    }
+    if (month < 1 || month > 12) {
+        return false;
+    }
+
+    int daysInMonth[] = {31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30, 31};
+
+    if (month == 2 && isLeapYear(year)) {
+        daysInMonth[1] = 29;
+    }
+    if (day < 1 || day > daysInMonth[month - 1]) {
+        return false;
+    }
+
+    return true;
+}
 
 void ListAllPatients(HashTable* ht) {
     printf("\nSvi pacijenti: \n");

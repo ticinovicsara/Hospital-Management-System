@@ -1,0 +1,3 @@
+1,Težak pad sa visine,1
+2,Gušenje,2
+3,Infarkt,0

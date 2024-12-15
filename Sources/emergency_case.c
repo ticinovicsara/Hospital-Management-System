@@ -1,7 +1,7 @@
 #include "../Headers/emergency.h"
 
-void initializeQueue(PriorityQueue* pq) {
-    pq->size = 0;
+void initializeQueue(PriorityQueue** pq) {
+    (*pq)->size = 0;
 }
 
 void upheap(PriorityQueue* pq, int index) {

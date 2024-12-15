@@ -13,7 +13,8 @@ SOURCES = $(SOURCES_DIR)/main.c \
           $(SOURCES_DIR)/read_files.c \
           $(SOURCES_DIR)/help_functions.c \
           $(SOURCES_DIR)/doctor.c \
-          $(USER_ACTIONS_DIR)/handle_patient.c
+          $(USER_ACTIONS_DIR)/handle_patient.c \
+		  $(USER_ACTIONS_DIR)/hanle_emergency.c
 
 OBJECTS = $(patsubst $(SOURCES_DIR)/%.c, $(OBJECTS_DIR)/%.o, \
           $(filter $(SOURCES_DIR)/%, $(SOURCES))) \

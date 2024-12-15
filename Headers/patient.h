@@ -42,5 +42,7 @@ void DeletePatient(HashTable* ht, const char* id, const char* surname);
 void ListAllPatients(HashTable* ht);
 void SearchPatientByName(HashTable* ht, char* name, char* surname);
 
+void AddPatient(HashTable* ht);
+void DeletePatientBySurname(HashTable* ht);
 
 #endif
