@@ -54,12 +54,15 @@ int main(){
 
         switch (option) {
             case 1:
+                clearScreen();
                 showPatientMenu(hash_table);
                 break;
             case 2:
+                clearScreen();
                 showDoctorMenu(root);
                 break;
             case 3:
+                clearScreen();
                 manageEmergencyCase(pq);
                 break;
             case 0:

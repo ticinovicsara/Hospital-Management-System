@@ -1,6 +1,8 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 
+#include <stdbool.h>
+
 #define MAX_NAME_LENGTH 50
 #define MAX_BIRTH_DATE_LENGTH 15
 #define MAX_ILLNESS_LENGTH 50
@@ -38,10 +40,10 @@ typedef struct HashTable{
 HashTable* CreateHashTable(int size);
 void InsertPatient(HashTable* ht, Patientptr patient);
 Patientptr SearchPatientByID(HashTable* ht, const char* id);
-void DeletePatient(HashTable* ht, const char* id, const char* surname);
+bool DeletePatient(HashTable* ht, const char* id, const char* surname);
 void ListAllPatients(HashTable* ht);
-void SearchPatientByName(HashTable* ht, char* name, char* surname);
-void DeletePatientBySurname(HashTable* ht);
+Patientptr SearchPatientByName(HashTable* ht, char* name, char* surname);
+void DeletePatientByIDSurname(HashTable* ht);
 void AddPatient(HashTable ht);
 
 #endif

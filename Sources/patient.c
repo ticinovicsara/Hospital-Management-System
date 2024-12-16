@@ -48,21 +48,19 @@ void InsertPatient(HashTable* ht, Patientptr patient){
     ht->buckets[index] = newNode;
 }
 
-void SearchPatientByName(HashTable* ht, char* name, char* surname){
+Patientptr SearchPatientByName(HashTable* ht, char* name, char* surname){
     int index = hash(name, surname, ht->size);
     NodePosition current = ht->buckets[index];
 
     while(current != NULL){
         Patientptr p = current->patient;
         if(strcmp(p->name, name) == 0 && strcmp(p->surname, surname) == 0){
-            printf("\nPacijent: %s %s", p->name, p->surname);
-            printf("\tID: %-10s\tIme: %-20s %-20s\tDatum Rodjenja: %-12s\n", p->id, p->name, p->surname, p->birthDate);
-            return;
+            return p;
         }
         current = current->next;
     }
 
-    printf("Pacijent nije nadjen\n");
+    return NULL;
 }
 
 Patientptr SearchPatientByID(HashTable* ht, const char* id){
@@ -78,7 +76,7 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id){
     return NULL; 
 }
 
-void DeletePatient(HashTable* ht, const char* id, const char* surname){
+bool DeletePatient(HashTable* ht, const char* id, const char* surname){
     int index = hash(id, "", ht->size);
     NodePosition current = ht->buckets[index];
     NodePosition prev = NULL;
@@ -94,11 +92,10 @@ void DeletePatient(HashTable* ht, const char* id, const char* surname){
 
             free(current->patient);
             free(current);
-            printf("Pacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
-            return;
+            return true;
         }
         prev = current;
         current = current->next;
     }
-    printf("Pacijent sa ID %s nije pronadjen.\n", id);
+    return false;
 }

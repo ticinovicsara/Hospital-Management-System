@@ -34,46 +34,19 @@ void AddPatient(HashTable ht){
     InsertPatient(&ht, newPatient);
 
     clearScreen();
-    printf("\nPacijent uspjesno kreiran\n");
+    printf("Pacijent uspjesno kreiran\n\n");
     return;
 }
 
-void inputNameAndSurname(char* name, char* surname) {
-    do {
-        printf("\nUnesite ime pacijenta: ");
-        scanf("%s", name);
-
-        if (!stringIsValid(name)) {
-            printf("Neispravan unos, pokusajte ponovo.\n");
-        }
-    } while (!stringIsValid(name));
-
-    do {
-        printf("\nUnesite prezime pacijenta: ");
-        scanf("%s", surname);
-
-        if (!stringIsValid(surname)) {
-            printf("Neispravan unos, pokusajte ponovo.\n");
-        }
-    } while (!stringIsValid(surname));
-}
 
 
-void DeletePatientBySurname(HashTable* ht){
-    clearScreen();
+void DeletePatientByIDSurname(HashTable* ht){
     printf("Brisanje pacijenta po ID-u i prezimenu:\n");
 
     char id[10];
     char surname[MAX_NAME_LENGTH];
 
-    do {
-        printf("Unesite ID pacijenta: ");
-        scanf("%s", id);
-
-        if (strlen(id) == 0) {
-            printf("ID ne moze biti prazan, pokusajte ponovo.\n");
-        }
-    } while (strlen(id) == 0);
+    getID(id);
 
     do {
         printf("Unesite prezime pacijenta: ");
@@ -84,8 +57,11 @@ void DeletePatientBySurname(HashTable* ht){
         }
     } while (!stringIsValid(surname));
 
-
-    DeletePatient(ht, id, surname);
+    if(!DeletePatient(ht, id, surname)){
+        clearScreen();
+        printf("\nPacijent sa navedenim ID-om i prezimenom ne postoji\n\n");
+        return;
+    }
     clearScreen();
     printf("\nPacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
     printf("\n");

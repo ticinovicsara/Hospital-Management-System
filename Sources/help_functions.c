@@ -15,6 +15,13 @@ void clearScreen() {
     }
 }
 
+void clearBuffer(){
+    int c;
+    while ((c = getchar()) != '\n' && c != EOF) {
+    }
+}
+
+
 bool stringIsValid(char* string){
     for (int i = 0; i < strlen(string); i++) {
         if (isdigit(string[i])) {
@@ -53,6 +60,49 @@ bool isValidDate(const char* date) {
     }
 
     return true;
+}
+
+bool isValidID(const char* id) {
+    if (strlen(id) == 0) {
+        return false;
+    }
+
+    for (int i = 0; i < strlen(id); i++) {
+        if (!isdigit(id[i])) {
+            return false;
+        }
+    }
+
+    return true;
+}
+
+void getID(char* id) {
+    while (1) {
+        printf("\nUnesite ID: ");
+        
+        if (scanf("%s", id) != 1) {
+            while (getchar() != '\n');
+            printf("Neispravan unos, pokusajte ponovo.\n");
+            continue;
+        }
+
+        if (isValidID(id)) {
+            break;
+        } else {
+            printf("Neispravan ID, unesite ponovno\n");
+        }
+        while (getchar() != '\n');
+    }
+}
+
+void PatientDetails(Patientptr patient){
+    printf("\nPacijent: %s %s\nID:%s\nDatum rodjenja:%s\nPovijest bolesti:\n", patient->name, patient->surname, patient->id, patient->birthDate);
+    printf("\tBolest\t\tDatum\t\tOpis\n\n");
+    RecordPtr temp = patient->history;
+    while(temp != NULL){
+        printf("\t%s\t\t%s\t\t%s\n",temp->ilness, temp->date, temp->description);
+        temp = temp->next;
+    }
 }
 
 void ListAllPatients(HashTable* ht) {
@@ -105,6 +155,25 @@ void ListAllDoctors(SpecializationNodePtr root){
     ListAllDoctors(root->right);
 }
 
+void inputNameAndSurname(char* name, char* surname) {
+    do {
+        printf("\nUnesite ime pacijenta: ");
+        scanf("%s", name);
+
+        if (!stringIsValid(name)) {
+            printf("Neispravan unos, pokusajte ponovo.\n");
+        }
+    } while (!stringIsValid(name));
+
+    do {
+        printf("\nUnesite prezime pacijenta: ");
+        scanf("%s", surname);
+
+        if (!stringIsValid(surname)) {
+            printf("Neispravan unos, pokusajte ponovo.\n");
+        }
+    } while (!stringIsValid(surname));
+}
 
 // void ListAllEmergencyCases(PriorityQueue pq){
 
