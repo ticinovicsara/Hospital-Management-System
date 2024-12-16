@@ -5,7 +5,6 @@
 #include <string.h>
 
 void AddPatient(HashTable ht){
-    clearScreen();
     printf("\nUnesite podatke za novog pacijenta:\n");
 
     Patientptr newPatient = (Patientptr)malloc(sizeof(Patient));
@@ -34,7 +33,9 @@ void AddPatient(HashTable ht){
 
     InsertPatient(&ht, newPatient);
 
-    printf("Pacijent uspjesno kreiran.\n");
+    clearScreen();
+    printf("\nPacijent uspjesno kreiran\n");
+    return;
 }
 
 void inputNameAndSurname(char* name, char* surname) {
@@ -85,6 +86,8 @@ void DeletePatientBySurname(HashTable* ht){
 
 
     DeletePatient(ht, id, surname);
+    clearScreen();
+    printf("\nPacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
     printf("\n");
 }
 

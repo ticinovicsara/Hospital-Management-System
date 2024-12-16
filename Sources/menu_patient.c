@@ -47,6 +47,7 @@ void showPatientMenu(HashTable* hash_table){
 
 void addPatient(HashTable ht){
     AddPatient(ht);
+    return;
 }
 
 void deletePatient(HashTable ht){

@@ -106,8 +106,6 @@ void ReadEmergencyCases(PriorityQueue* pq){
 
     char buffer[BUFFER_SIZE];
     while (fgets(buffer, BUFFER_SIZE, fp)) {
-        printf("Procitana linija: %s\n", buffer);
-
         if (sscanf(buffer, "%d,%99[^,],%d", &newCase->id, newCase->description, &newCase->priority) == 3) {
             enqueue(pq, *newCase);
         }

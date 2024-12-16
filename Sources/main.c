@@ -24,10 +24,12 @@ int main(){
     initializeQueue(pq);
     ReadEmergencyCases(pq);
 
+    char input[100];
     int option;
 
+    clearScreen();
+
     while (1) {
-        clearScreen();
         printf("\n===== Hospital Management System =====\n\n");
         printf("Dobrodosli! Za nastavak odaberite radnju:\n");
         printf("1 - Pacijenti\n");
@@ -35,7 +37,20 @@ int main(){
         printf("3 - Hitni slucajevi\n");
         printf("0 - Izlaz\n");
         printf("\n: ");
-        scanf("%d", &option);
+        
+        if (!fgets(input, sizeof(input), stdin)) {
+            clearScreen();
+            printf("Greska pri citanju unosa, pokusajte ponovo.\n");
+            continue;
+        }
+
+        input[strcspn(input, "\n")] = '\0';
+
+        if (sscanf(input, "%d", &option) != 1) {
+            clearScreen();
+            printf("Neispravan unos, unesite broj.\n");
+            continue;
+        }
 
         switch (option) {
             case 1:
@@ -50,8 +65,13 @@ int main(){
             case 0:
                 printf("Izlaz iz programa...\n");
                 exit(0);
+                break;
             default:
+                clearScreen();
                 printf("Neispravan unos, pokusajte ponovo.\n");
+                printf("Pritisnite bilo sto za nastavak...\n");
+                getchar();
+                break;
         }
     }
 
