@@ -10,8 +10,8 @@ typedef struct _emergencyCase{
 }EmergencyCase;
 
 typedef struct {
+    EmergencyCase queue[MAX_QUEUE_SIZE];
     int size;
-    EmergencyCase* queue;
 } PriorityQueue;
 
 

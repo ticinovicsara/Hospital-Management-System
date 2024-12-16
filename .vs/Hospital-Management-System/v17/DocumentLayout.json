@@ -1,0 +1,309 @@
+{
+  "Version": 1,
+  "WorkspaceRootPath": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\",
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\main.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\menu_doctor.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\menu_doctor.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\read_files.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\read_files.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\patient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\patient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\menu_patient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\menu_patient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\help_functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\help_functions.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\handle_patient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\handle_patient.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\handle_emergency.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\handle_emergency.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\emergency_case.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\emergency_case.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\doctor.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Sources\\doctor.c||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\read_files.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\read_files.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\patient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\patient.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\menus.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\menus.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\help-functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\help-functions.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\emergency.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\emergency.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\doctor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\doctor.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\appointment.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:Headers\\appointment.h||{D0E1A5C6-B359-4E41-9B60-3365922C2A22}"
+    }
+  ],
+  "DocumentGroupContainers": [
+    {
+      "Orientation": 0,
+      "VerticalTabListWidth": 256,
+      "DocumentGroups": [
+        {
+          "DockedWidth": 200,
+          "SelectedChildIndex": 8,
+          "Children": [
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "read_files.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\read_files.c",
+              "RelativeDocumentMoniker": "Sources\\read_files.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\read_files.c",
+              "RelativeToolTip": "Sources\\read_files.c",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:26:42.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "patient.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\patient.c",
+              "RelativeDocumentMoniker": "Sources\\patient.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\patient.c",
+              "RelativeToolTip": "Sources\\patient.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA9AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:26:30.62Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "menu_doctor.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\menu_doctor.c",
+              "RelativeDocumentMoniker": "Sources\\menu_doctor.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\menu_doctor.c",
+              "RelativeToolTip": "Sources\\menu_doctor.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:26:19.391Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "help_functions.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\help_functions.c",
+              "RelativeDocumentMoniker": "Sources\\help_functions.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\help_functions.c",
+              "RelativeToolTip": "Sources\\help_functions.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:26:04.577Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "handle_patient.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\handle_patient.c",
+              "RelativeDocumentMoniker": "Sources\\handle_patient.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\handle_patient.c",
+              "RelativeToolTip": "Sources\\handle_patient.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:25:51.586Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "handle_emergency.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\handle_emergency.c",
+              "RelativeDocumentMoniker": "Sources\\handle_emergency.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\handle_emergency.c",
+              "RelativeToolTip": "Sources\\handle_emergency.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:25:38.872Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "doctor.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\doctor.c",
+              "RelativeDocumentMoniker": "Sources\\doctor.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\doctor.c",
+              "RelativeToolTip": "Sources\\doctor.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:25:21.83Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "read_files.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\read_files.h",
+              "RelativeDocumentMoniker": "Headers\\read_files.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\read_files.h",
+              "RelativeToolTip": "Headers\\read_files.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:20.375Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "main.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\main.c",
+              "RelativeDocumentMoniker": "Sources\\main.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\main.c",
+              "RelativeToolTip": "Sources\\main.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:24:30.103Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "patient.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\patient.h",
+              "RelativeDocumentMoniker": "Headers\\patient.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\patient.h",
+              "RelativeToolTip": "Headers\\patient.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:18.905Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 12,
+              "Title": "menus.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\menus.h",
+              "RelativeDocumentMoniker": "Headers\\menus.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\menus.h",
+              "RelativeToolTip": "Headers\\menus.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:16.935Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "menu_patient.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\menu_patient.c",
+              "RelativeDocumentMoniker": "Sources\\menu_patient.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\menu_patient.c",
+              "RelativeToolTip": "Sources\\menu_patient.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:24:58.738Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 13,
+              "Title": "help-functions.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\help-functions.h",
+              "RelativeDocumentMoniker": "Headers\\help-functions.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\help-functions.h",
+              "RelativeToolTip": "Headers\\help-functions.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:14.704Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 14,
+              "Title": "emergency.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\emergency.h",
+              "RelativeDocumentMoniker": "Headers\\emergency.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\emergency.h",
+              "RelativeToolTip": "Headers\\emergency.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:12.356Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "doctor.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\doctor.h",
+              "RelativeDocumentMoniker": "Headers\\doctor.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\doctor.h",
+              "RelativeToolTip": "Headers\\doctor.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:11.055Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "appointment.h",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\appointment.h",
+              "RelativeDocumentMoniker": "Headers\\appointment.h",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Headers\\appointment.h",
+              "RelativeToolTip": "Headers\\appointment.h",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
+              "WhenOpened": "2024-12-16T18:25:09.499Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "emergency_case.c",
+              "DocumentMoniker": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\emergency_case.c",
+              "RelativeDocumentMoniker": "Sources\\emergency_case.c",
+              "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\emergency_case.c",
+              "RelativeToolTip": "Sources\\emergency_case.c",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
+              "WhenOpened": "2024-12-16T18:24:25.275Z",
+              "EditorCaption": ""
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

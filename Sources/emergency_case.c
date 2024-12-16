@@ -24,17 +24,15 @@ void upheap(PriorityQueue* pq, int index) {
 
 void enqueue(PriorityQueue* pq, EmergencyCase newCase) {
     if (pq->size >= MAX_QUEUE_SIZE) {
-        pq->queue = (EmergencyCase*)realloc(pq->queue, sizeof(EmergencyCase) * (pq->size + 1));
-        if (pq->queue == NULL) {
-            printf("Nemoguce alocirati memoriju za prosirenje reda\n");
-            return;
-        }
+        printf("Red je pun, ne može se dodati novi hitan slučaj.\n");
+        return;
     }
 
     pq->queue[pq->size] = newCase;
-    upheap(pq, pq->size);
     pq->size++;
+    upheap(pq, pq->size - 1);
 }
+
 
 void downheap(PriorityQueue* pq, int index) {
     int leftChild, rightChild, smallest;

@@ -98,9 +98,24 @@ void ReadEmergencyCases(PriorityQueue* pq){
         return;
     }
 
-    EmergencyCase newCase;
-    while (fscanf(fp, "%d,%99[^,],%d\n", &newCase.id, newCase.description, &newCase.priority) == 3) {
-        enqueue(pq, newCase);
+    EmergencyCase* newCase = (EmergencyCase*)malloc(sizeof(EmergencyCase));
+    if (!newCase) {
+        printf("Greska pri alokaciji memorije za hitan slucaj\n");
+        return;
+    }
+
+    char buffer[BUFFER_SIZE];
+    while (fgets(buffer, BUFFER_SIZE, fp)) {
+        printf("Procitana linija: %s\n", buffer);
+
+        if (sscanf(buffer, "%d,%99[^,],%d", &newCase->id, newCase->description, &newCase->priority) == 3) {
+            enqueue(pq, *newCase);
+        }
+        else{
+            printf("Greska pri parsiranju hitnog slucaja: %s\n", buffer);
+            free(newCase);
+            break;
+        }
     }
 
     fclose(fp); 
