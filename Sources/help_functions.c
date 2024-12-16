@@ -96,13 +96,28 @@ void getID(char* id) {
 }
 
 void PatientDetails(Patientptr patient){
-    printf("\nPacijent: %s %s\nID:%s\nDatum rodjenja:%s\nPovijest bolesti:\n", patient->name, patient->surname, patient->id, patient->birthDate);
-    printf("\tBolest\t\tDatum\t\tOpis\n\n");
+    clearScreen();
+    printf("\n---------------------------- PACIJENT ----------------------------\n");
+    printf("Ime i prezime:\t\t%s %s\n", patient->name, patient->surname);
+    printf("ID:\t\t\t%s\n", patient->id);
+    printf("Datum rođenja:\t\t%s\n", patient->birthDate);
+    printf("\n\n------------------------ POVIJEST BOLESTI ------------------------\n");
+    printf("%-20s %-15s %-30s\n", "Bolest", "Datum", "Opis");
+    printf("---------------------------------------------------------------\n");
     RecordPtr temp = patient->history;
-    while(temp != NULL){
-        printf("\t%s\t\t%s\t\t%s\n",temp->ilness, temp->date, temp->description);
-        temp = temp->next;
+    if (temp == NULL) {
+        printf("\nNema podataka o bolesti\n");
+    } else {
+        while (temp != NULL) {
+            printf("%-20s %-15s %-30s\n", temp->ilness, temp->date, temp->description);
+            temp = temp->next;
+        }
     }
+    printf("\n---------------------------------------------------------------\n");
+    printf("\nPristisnite bilo sto za nastavak...");
+    getchar();
+    getchar();
+    return;
 }
 
 void ListAllPatients(HashTable* ht) {

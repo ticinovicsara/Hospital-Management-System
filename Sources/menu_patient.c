@@ -74,7 +74,6 @@ void showPatientMenu(HashTable* hash_table){
     }
 }
 
-
 void addPatient(HashTable ht){
     AddPatient(ht);
     return;
@@ -93,8 +92,24 @@ void searchPatients(HashTable ht){
         printf("\n0 - Povratak\n\n");
         printf(": ");
 
+        char input[100];
         int option;
-        scanf("%d", &option);
+
+        if (!fgets(input, sizeof(input), stdin)) {
+            printf("Greska pri citanju unosa, pokusajte ponovo.\n");
+            continue;
+        }
+        if (sscanf(input, "%d", &option) != 1) {
+            clearScreen();
+            printf("Neispravan unos, pokusajte ponovo.\n\n");
+            continue;
+        }
+
+        if (sscanf(input, "%d", &option) != 1) {
+            clearScreen();
+            printf("\nNeispravan unos, unesite broj.\n\n");
+            continue;
+        }
         
         if (option == 1) {
             char id[10];
@@ -118,7 +133,7 @@ void searchPatients(HashTable ht){
             Patientptr p = SearchPatientByName(&ht, name, surname);
             if(!p){
                 clearScreen();
-                printf("\nPacijent s navedenim imenom nije nadjen\n", p->id);
+                printf("Pacijent s navedenim imenom nije nadjen\n\n", p->id);
                 break;
             }
 
@@ -131,7 +146,7 @@ void searchPatients(HashTable ht){
         }
         else {
             clearScreen();
-            printf("Neispravan unos, pokusajte ponovo.\n");
+            printf("Neispravan unos, pokusajte ponovo.\n\n");
             continue;
         }
     }
