@@ -4,7 +4,6 @@
 #include <stdbool.h>
 
 #define MAX_NAME_LENGTH 50
-#define MAX_BIRTH_DATE_LENGTH 15
 #define MAX_ILLNESS_LENGTH 50
 #define MAX_DATE_LENGTH 11
 #define MAX_DESCRIPTION_LENGTH 200
@@ -42,7 +41,7 @@ void InsertPatient(HashTable* ht, Patientptr patient);
 Patientptr SearchPatientByID(HashTable* ht, const char* id);
 bool DeletePatient(HashTable* ht, const char* id, const char* surname);
 void ListAllPatients(HashTable* ht);
-Patientptr SearchPatientByName(HashTable* ht, char* name, char* surname);
+Patientptr SearchPatientBySurname(HashTable* ht, const char* surname);
 void DeletePatientByIDSurname(HashTable* ht);
 void AddPatient(HashTable ht);
 

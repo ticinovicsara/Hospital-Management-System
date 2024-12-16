@@ -15,7 +15,9 @@ void clearBuffer();
 
 bool stringIsValid(char* string);
 bool isValidDate(const char* date);
-void inputNameAndSurname(char* name, char* surname);
+void InputName(char* name);
+void InputSurname(char* surname);
+void getBirthDate(char* birthDate);
 bool isValidID(const char* id);
 void getID(char* id);
 

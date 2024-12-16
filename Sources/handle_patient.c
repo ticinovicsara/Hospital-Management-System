@@ -16,18 +16,14 @@ void AddPatient(HashTable ht){
     char name[MAX_NAME_LENGTH];
     char surname[MAX_NAME_LENGTH];
 
-    inputNameAndSurname(name, surname);
+    InputName(name);
+    InputSurname(surname);
     strcpy(newPatient->name, name);
     strcpy(newPatient->surname, surname);
 
-    do {
-        printf("\nUnesite datum rodjenja pacijenta u formatu (DD.MM.YYYY): ");
-        scanf("%s", newPatient->birthDate);
-
-        if (!isValidDate(newPatient->birthDate)) {
-            printf("Datum nije valjan, pokusajte ponovo.\n");
-        }
-    } while (!isValidDate(newPatient->birthDate));
+    char birth[MAX_DATE_LENGTH];
+    getBirthDate(birth);
+    strcpy(newPatient->birthDate, birth);
 
     newPatient->history = NULL;
 
@@ -39,7 +35,6 @@ void AddPatient(HashTable ht){
 }
 
 
-
 void DeletePatientByIDSurname(HashTable* ht){
     printf("Brisanje pacijenta po ID-u i prezimenu:\n");
 
@@ -48,14 +43,7 @@ void DeletePatientByIDSurname(HashTable* ht){
 
     getID(id);
 
-    do {
-        printf("Unesite prezime pacijenta: ");
-        scanf("%s", surname);
-
-        if (!stringIsValid(surname)) {
-            printf("Neispravan unos, pokusajte ponovo.\n");
-        }
-    } while (!stringIsValid(surname));
+    InputSurname(surname);
 
     if(!DeletePatient(ht, id, surname)){
         clearScreen();

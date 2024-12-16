@@ -62,6 +62,19 @@ bool isValidDate(const char* date) {
     return true;
 }
 
+void getBirthDate(char* birthDate){
+    while (1) {
+        printf("\nUnesite datum rodjenja u formatu (DD.MM.YYYY): ");
+        scanf("%s", birthDate);
+
+        if (isValidDate(birthDate)) {
+            break;
+        } else {
+            printf("Datum nije valjan, pokusajte ponovo.\n");
+        }
+    }
+}
+
 bool isValidID(const char* id) {
     if (strlen(id) == 0) {
         return false;
@@ -170,18 +183,19 @@ void ListAllDoctors(SpecializationNodePtr root){
     ListAllDoctors(root->right);
 }
 
-void inputNameAndSurname(char* name, char* surname) {
+void InputName(char* name){
     do {
-        printf("\nUnesite ime pacijenta: ");
+        printf("\nUnesite ime: ");
         scanf("%s", name);
 
         if (!stringIsValid(name)) {
             printf("Neispravan unos, pokusajte ponovo.\n");
         }
     } while (!stringIsValid(name));
-
+}
+void InputSurname(char* surname) {
     do {
-        printf("\nUnesite prezime pacijenta: ");
+        printf("\nUnesite prezime: ");
         scanf("%s", surname);
 
         if (!stringIsValid(surname)) {

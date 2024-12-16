@@ -15,7 +15,7 @@ typedef struct {
 } PriorityQueue;
 
 
-void manageEmergencyCase();
+void showEmergencyCaseMenu(PriorityQueue* pq);
 void initializeQueue(PriorityQueue* pq);
 void upheap(PriorityQueue* pq, int index);
 void enqueue(PriorityQueue* pq, EmergencyCase newCase);

@@ -48,13 +48,13 @@ void InsertPatient(HashTable* ht, Patientptr patient){
     ht->buckets[index] = newNode;
 }
 
-Patientptr SearchPatientByName(HashTable* ht, char* name, char* surname){
-    int index = hash(name, surname, ht->size);
+Patientptr SearchPatientBySurname(HashTable* ht, const char* surname){
+    int index = hash("", surname, ht->size);
     NodePosition current = ht->buckets[index];
 
     while(current != NULL){
         Patientptr p = current->patient;
-        if(strcmp(p->name, name) == 0 && strcmp(p->surname, surname) == 0){
+        if(strcmp(p->surname, surname) == 0){
             return p;
         }
         current = current->next;
@@ -77,7 +77,16 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id){
 }
 
 bool DeletePatient(HashTable* ht, const char* id, const char* surname){
-    int index = hash(id, "", ht->size);
+    Patientptr patient = SearchPatientByID(ht, id);
+    if (patient == NULL) {
+        patient = SearchPatientBySurname(ht, surname);
+    }
+
+    if (patient == NULL) {
+        return false;
+    }
+
+    int index = hash(patient->id, patient->surname, ht->size);
     NodePosition current = ht->buckets[index];
     NodePosition prev = NULL;
 

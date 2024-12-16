@@ -10,6 +10,7 @@ void searchPatients(HashTable ht);
 
 void showPatientMenu(HashTable* hash_table){
     while(1){
+        printf("\n---- PACIJENTI ----\n\n");
         printf("1 - Dodaj pacijenta\n");
         printf("2 - Obrisi pacijenta\n");
         printf("3 - Pretrazi pacijente\n");
@@ -65,6 +66,8 @@ void showPatientMenu(HashTable* hash_table){
                 clearBuffer();
                 break;
             case 0:
+                clearBuffer();
+                clearScreen();
                 return;
             default:
                 clearScreen();
@@ -128,9 +131,9 @@ void searchPatients(HashTable ht){
             char name[MAX_NAME_LENGTH];
             char surname[MAX_NAME_LENGTH];
 
-            inputNameAndSurname(name, surname);
+            InputSurname(surname);
 
-            Patientptr p = SearchPatientByName(&ht, name, surname);
+            Patientptr p = SearchPatientBySurname(&ht, surname);
             if(!p){
                 clearScreen();
                 printf("Pacijent s navedenim imenom nije nadjen\n\n", p->id);

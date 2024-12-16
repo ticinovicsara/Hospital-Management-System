@@ -1,0 +1,67 @@
+#include <stdio.h>
+#include "emergency.h"
+#include "../Headers/help-functions.h"
+
+void showEmergencyCaseMenu(PriorityQueue* pq){
+    while(true){
+        printf("\n---- HITNI SLUCAJEVI ----\n\n");
+        printf("1 - Dodaj hitni slucaj\n");
+        printf("2 - Pogledaj najhitniji slucaj\n");
+        printf("\n0 - Povratak\n");
+        printf("\n: ");
+
+        char input[100];
+        int option;
+
+        if (!fgets(input, sizeof(input), stdin)) {
+            printf("Greska pri citanju unosa, pokusajte ponovo.\n");
+            continue;
+        }
+        if (sscanf(input, "%d", &option) != 1) {
+            clearScreen();
+            printf("Neispravan unos, pokusajte ponovo.\n\n");
+            continue;
+        }
+
+
+        if (sscanf(input, "%d", &option) != 1) {
+            clearScreen();
+            printf("\nNeispravan unos, unesite broj.\n\n");
+            continue;
+        }
+
+        switch (option) {
+            case 1:
+                clearScreen();
+                EmergencyCase newCase;
+                printf("Unesite ID hitnog slucaja: ");
+                scanf("%d", &newCase.id);
+                printf("Unesite opis hitnog slucaja: ");
+                getchar();
+                fgets(newCase.description, sizeof(newCase.description), stdin);
+                printf("Unesite prioritet hitnog slucaja (manji broj = veci prioritet): ");
+                scanf("%d", &newCase.priority);
+                    
+                enqueue(pq, newCase);
+                printf("Hitni slucaj dodan\n");
+                clearBuffer();
+                break;
+            case 2:
+                clearScreen();
+                EmergencyCase topCase = peek(pq);
+                if (topCase.id != 0) {
+                    printf("Najhitniji slucaj: ID: %d, Opis: %s, Prioritet: %d\n", topCase.id, topCase.description, topCase.priority);
+                }
+                clearBuffer();
+                break;
+            case 0:
+                clearBuffer();
+                clearScreen();
+                return;
+            default:
+                clearScreen();
+                printf("Neispravan unos, pokusajte ponovo.\n");
+                break;
+        }
+    }
+}

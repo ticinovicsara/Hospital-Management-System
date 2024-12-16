@@ -5,13 +5,14 @@
 
 void showDoctorMenu(SpecializationNodePtr root){
     while(1){
-        clearScreen();
+        printf("\n---- DOKTORI ----\n\n");
         printf("1 - Dodaj doktora\n");
         printf("2 - Obrisi doktora\n");
         printf("3 - Trazi doktora\n");
         printf("4 - Dodjela pacijenta doktoru\n");
         printf("5 - Svi doktori\n");
         printf("\n0 - Povratak\n");
+        printf("\n: ");
 
         int option;
         scanf("%d", &option);
@@ -32,7 +33,9 @@ void showDoctorMenu(SpecializationNodePtr root){
             case 5:
                 break;
 
-            case '0':
+            case 0:
+                clearBuffer();
+                clearScreen();
                 return;
 
             default:

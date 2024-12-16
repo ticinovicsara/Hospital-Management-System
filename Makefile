@@ -15,7 +15,8 @@ SOURCES = $(SOURCES_DIR)/main.c \
           $(SOURCES_DIR)/handle_patient.c \
           $(SOURCES_DIR)/handle_emergency.c \
           $(SOURCES_DIR)/menu_doctor.c \
-          $(SOURCES_DIR)/menu_patient.c
+          $(SOURCES_DIR)/menu_patient.c \
+          $(SOURCES_DIR)/menu_emergency.c
 
 
 OBJECTS = $(patsubst $(SOURCES_DIR)/%.c, $(OBJECTS_DIR)/%.o, $(SOURCES))

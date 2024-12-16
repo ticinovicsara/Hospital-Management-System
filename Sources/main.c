@@ -7,8 +7,6 @@
 #include <string.h>
 #include <stdlib.h>
 
-void manageEmergencyCases(PriorityQueue* pq);
-
 int main(){
     HashTable* hash_table = CreateHashTable(11);
     ReadPatients(hash_table);
@@ -30,7 +28,9 @@ int main(){
     clearScreen();
 
     while (1) {
-        printf("\n===== Hospital Management System =====\n\n");
+        printf("   ------------------------------------");
+        printf("\n  <     HOSPITAL MANAGEMENT SYSTEM    >\n");
+        printf("   ------------------------------------\n\n");
         printf("Dobrodosli! Za nastavak odaberite radnju:\n");
         printf("1 - Pacijenti\n");
         printf("2 - Doktori\n");
@@ -63,7 +63,7 @@ int main(){
                 break;
             case 3:
                 clearScreen();
-                manageEmergencyCase(pq);
+                showEmergencyCaseMenu(pq);
                 break;
             case 0:
                 printf("Izlaz iz programa...\n");
@@ -81,12 +81,4 @@ int main(){
     free(pq);
     free(root);
     return 0;
-}
-
-void manageEmergencyCases(PriorityQueue* pq){
-    if (pq == NULL || pq->size == 0) {
-        printf("Red je prazan ili nije inicijalizovan.\n");
-        return;
-    }
-    manageEmergencyCase(pq);
 }
