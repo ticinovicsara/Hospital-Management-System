@@ -3,12 +3,34 @@
 #include <string.h>
 #include <stdlib.h>
 
-SpecializationNodePtr balanceSpecializationNode(SpecializationNodePtr root);
 SpecializationNodePtr rightRotation(SpecializationNodePtr root);
 SpecializationNodePtr leftRotation(SpecializationNodePtr root);
 int max(int a, int b);
 int getHeight(SpecializationNodePtr node);
 int getBalance(SpecializationNodePtr node);
+
+SpecializationNodePtr BalanceTree(SpecializationNodePtr root){
+    root->height = 1 + max(getHeight(root->left), getHeight(root->right));
+
+    int balance = getBalance(root);
+
+    if (balance > 1 && getBalance(root->left) >= 0) {
+        return rightRotation(root);
+    }
+    if (balance < -1 && getBalance(root->right) <= 0) {
+        return leftRotation(root);
+    }
+    if (balance > 1 && getBalance(root->left) < 0) {
+        root->left = leftRotation(root->left);
+        return rightRotation(root);
+    }
+    if (balance < -1 && getBalance(root->right) > 0) {
+        root->right = rightRotation(root->right);
+        return leftRotation(root);
+    }
+
+    return root;
+}
 
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments){
     if(!root){
@@ -66,7 +88,7 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
         return root;
     }
     
-    root = balanceSpecializationNode(root);
+    root = BalanceTree(root);
     return root;
 }
 
@@ -89,7 +111,7 @@ DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const
     return SearchDoctorByName(root->right, name, surname);
 }
 
-DoctorPtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
+SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
     if (!root) {
         return NULL;
     }
@@ -137,33 +159,10 @@ SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name,
         }
     }
 
-    root = balanceSpecializationNode(root);
     return root;
 }
 
 
-SpecializationNodePtr balanceSpecializationNode(SpecializationNodePtr root) {
-    root->height = 1 + max(getHeight(root->left), getHeight(root->right));
-
-    int balance = getBalance(root);
-
-    if (balance > 1 && getBalance(root->left) >= 0) {
-        return rightRotation(root);
-    }
-    if (balance < -1 && getBalance(root->right) <= 0) {
-        return leftRotation(root);
-    }
-    if (balance > 1 && getBalance(root->left) < 0) {
-        root->left = leftRotation(root->left);
-        return rightRotation(root);
-    }
-    if (balance < -1 && getBalance(root->right) > 0) {
-        root->right = rightRotation(root->right);
-        return leftRotation(root);
-    }
-
-    return root;
-}
 
 int max(int a, int b) {
     return (a > b) ? a : b;

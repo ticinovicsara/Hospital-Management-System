@@ -1,5 +1,6 @@
 #ifndef DOCTOR_H
 #define DOCTOR_H
+
 #include "patient.h"
 #include "appointment.h"
 
@@ -22,10 +23,10 @@ typedef struct _specializationNode{
 }SpecializationNode;
 
 
-
+SpecializationNodePtr BalanceTree(SpecializationNodePtr root);
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments);
 SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname);
-DoctorPtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
+SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
 DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname);
 
 #endif

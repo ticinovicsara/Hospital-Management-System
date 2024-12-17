@@ -9,7 +9,7 @@
 #include "../Headers/help-functions.h"
 #include "../Headers/emergency.h"
 
-void clearScreen() {
+void clearScreen(){
     for (int i = 0; i < 50; i++) {
         printf("\n");
     }
@@ -117,13 +117,27 @@ void PatientDetails(Patientptr patient){
     printf("\n\n------------------------ POVIJEST BOLESTI ------------------------\n");
     printf("%-20s %-15s %-30s\n", "Bolest", "Datum", "Opis");
     printf("---------------------------------------------------------------\n");
-    RecordPtr temp = patient->history;
+    RecordPtr temp = patient->ilnesses;
     if (temp == NULL) {
         printf("\nNema podataka o bolesti\n");
     } else {
         while (temp != NULL) {
             printf("%-20s %-15s %-30s\n", temp->ilness, temp->date, temp->description);
             temp = temp->next;
+        }
+    }
+
+    printf("\n------------------------ POVIJEST PREGLEDA ----------------------\n");
+    printf("%-20s %-15s %-30s\n", "Vrsta pregleda", "Datum", "Opis");
+    printf("---------------------------------------------------------------\n");
+
+    RecordPtr checkupTemp = patient->checkups;
+    if (checkupTemp == NULL) {
+        printf("\nNema podataka o pregledima\n");
+    } else {
+        while (checkupTemp != NULL) {
+            printf("%-20s %-15s %-30s\n", checkupTemp->ilness, checkupTemp->date, checkupTemp->description);
+            checkupTemp = checkupTemp->next;
         }
     }
     printf("\n---------------------------------------------------------------\n");
@@ -240,7 +254,7 @@ void ListDoctorsBySpecialization(SpecializationNodePtr root, const char* special
     }
 }
 
-void ListAvailableAppointments(Doctor doctor){
+void ListAvailableAppointments(DoctorPtr doctor){
     printf("Dostupni termini doktora: %s %s\n\n", doctor->name, doctor->surname);
 
     if (doctor == NULL) {
@@ -278,6 +292,41 @@ void InOrderAppointments(AppointmentNodePtr root, int* count) {
     InOrderAppointments(root->right, count);
 }
 
-// void ListAllEmergencyCases(PriorityQueue pq){
+void ListAllEmergencyCases(PriorityQueue* pq){
+    if (pq->size == 0) {
+        printf("Nema hitnih slucajeva u redu.\n");
+        return;
+    }
 
-// }
+    printf("Hitni slucajevi u redu:\n");
+    for (int i = 0; i < pq->size; i++) {
+        printf("ID: %d, Opis: %s, Prioritet: %d\n", pq->queue[i].id, pq->queue[i].description, pq->queue[i].priority);
+    }
+}
+
+void PrintIllnessHistory(Patientptr patient) {
+    printf("\n--- Povijest bolesti ---\n");
+    RecordPtr temp = patient->ilnesses;
+    if (temp == NULL) {
+        printf("Nema podataka o bolestima.\n");
+    } else {
+        while (temp != NULL) {
+            printf("Datum: %-15s | Bolest: %-20s | Opis: %-30s\n", temp->date, temp->ilness, temp->description);
+            temp = temp->next;
+        }
+    }
+}
+
+void PrintCheckupHistory(Patientptr patient) {
+    printf("\n--- Povijest pregleda ---\n");
+    RecordPtr temp = patient->checkups;
+    if (temp == NULL) {
+        printf("Nema podataka o pregledima.\n");
+    } else {
+        while (temp != NULL) {
+            printf("Datum: %-15s | Vrsta: %-20s | Opis: %-30s\n", temp->date, temp->ilness, temp->description);
+            temp = temp->next;
+        }
+    }
+}
+

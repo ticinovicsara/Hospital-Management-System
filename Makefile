@@ -12,6 +12,7 @@ SOURCES = $(SOURCES_DIR)/main.c \
           $(SOURCES_DIR)/doctor.c \
           $(SOURCES_DIR)/help_functions.c \
           $(SOURCES_DIR)/emergency_case.c \
+          $(SOURCES_DIR)/appointment.c \
           $(SOURCES_DIR)/handle_patient.c \
           $(SOURCES_DIR)/handle_emergency.c \
           $(SOURCES_DIR)/menu_doctor.c \

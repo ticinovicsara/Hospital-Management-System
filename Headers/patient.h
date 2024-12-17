@@ -2,7 +2,6 @@
 #define PATIENT_H
 
 #include <stdbool.h>
-#include "doctor.h"
 
 #define MAX_NAME_LENGTH 50
 #define MAX_ILLNESS_LENGTH 50
@@ -45,9 +44,7 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id);
 Patientptr SearchPatientBySurname(HashTable* ht, const char* surname);
 
 bool DeletePatient(HashTable* ht, const char* id, const char* surname);
-void DeletePatientByIDSurname(HashTable* ht);
-
-void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root);
+void DeletePatientByIDSurname(HashTable* ht)
 
 void InsertPatient(HashTable* ht, Patientptr patient);
 void AddPatient(HashTable ht);

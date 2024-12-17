@@ -23,10 +23,11 @@ void AddPatient(HashTable ht){
     strcpy(newPatient->surname, surname);
 
     char birth[MAX_DATE_LENGTH];
-    getBirthDate(birth);
+    getDate(birth);
     strcpy(newPatient->birthDate, birth);
 
-    newPatient->history = NULL;
+    newPatient->ilnesses = NULL;
+    newPatient->checkups = NULL;
 
     InsertPatient(&ht, newPatient);
 
@@ -85,15 +86,15 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     ListAvailableAppointments(doctor);
     getDate(appointment);
 
-    if (!isAppointmentAvailable(doctor->appointments, appointmentDate)) {
-        printf("Termin %s nije dostupan, pokusajte ponovo.\n", appointmentDate);
+    if (!isAppointmentAvailable(doctor->appointments, appointment)) {
+        printf("Termin %s nije dostupan, pokusajte ponovo.\n", appointment);
         return;
     }
 
     printf("\nUnesite ID pacijenta: ");
     char patientID[10];
     getID(patientID);
-    Patientptr patient = FindPatientByID(ht, patientID);
+    Patientptr patient = SearchPatientByID(&ht, patientID);
     if (!patient) {
         printf("Pacijent nije pronadjen.\n");
         return;
@@ -102,7 +103,7 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     doctor->appointments = InsertAppointment(doctor->appointments, appointment, patient->id);
     doctor->availableAppointments--;
 
-    AddToPatientHistory(patient, appointment, "Zakazan termin kod doktora");
+    AddToCheckupHistory(patient, appointment, "Zakazan termin kod doktora");
 
     printf("Termin %s je uspjesno rezerviran za pacijenta %s %s kod doktora %s %s.\n", appointment, patient->name, patient->surname, doctor->name, doctor->surname);
 }

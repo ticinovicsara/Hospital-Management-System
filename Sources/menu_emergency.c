@@ -7,6 +7,7 @@ void showEmergencyCaseMenu(PriorityQueue* pq){
         printf("\n---- HITNI SLUCAJEVI ----\n\n");
         printf("1 - Dodaj hitni slucaj\n");
         printf("2 - Pogledaj najhitniji slucaj\n");
+        printf("3 - Svi hitni slucajevi\n");
         printf("\n0 - Povratak\n");
         printf("\n: ");
 
@@ -34,8 +35,7 @@ void showEmergencyCaseMenu(PriorityQueue* pq){
             case 1:
                 clearScreen();
                 EmergencyCase newCase;
-                printf("Unesite ID hitnog slucaja: ");
-                scanf("%d", &newCase.id);
+                getID(&newCase.id);
                 printf("Unesite opis hitnog slucaja: ");
                 getchar();
                 fgets(newCase.description, sizeof(newCase.description), stdin);
@@ -52,6 +52,11 @@ void showEmergencyCaseMenu(PriorityQueue* pq){
                 if (topCase.id != 0) {
                     printf("Najhitniji slucaj: ID: %d, Opis: %s, Prioritet: %d\n", topCase.id, topCase.description, topCase.priority);
                 }
+                clearBuffer();
+                break;
+            case 2:
+                clearScreen();
+                ListAllEmergencyCases(pq);
                 clearBuffer();
                 break;
             case 0:

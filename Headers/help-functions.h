@@ -4,24 +4,34 @@
 #include "patient.h"
 #include "doctor.h"
 #include "emergency.h"
+#include "appointment.h>"
 #include <stdbool.h>
 
-void ListAllPatients(HashTable* ht);
-void ListAllDoctors(SpecializationNodePtr root);
-void PrintDoctors(SpecializationNodePtr root);
 void PatientDetails(Patientptr patient);
+void ListAllPatients(HashTable* ht);
+void PrintIllnessHistory(Patientptr patient);
+void PrintCheckupHistory(Patientptr patient);
+
+void PrintDoctors(SpecializationNodePtr root);
+void ListAllDoctors(SpecializationNodePtr root);
 void ListAllSpecializations(SpecializationNodePtr root);
 void ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization);
-void ListAvailableAppointments(Doctor doctor);
-void ListAllEmergencyCases(PriorityQueue pq);
+void ListAvailableAppointments(DoctorPtr doctor);
+void InOrderAppointments(AppointmentNodePtr root, int* count);
+
+void ListAllEmergencyCases(PriorityQueue* pq);
 
 void clearScreen();
 void clearBuffer();
 
 bool stringIsValid(char* string);
-void InputName(char* name, char* role)
-void InputSurname(char* surname, char* role);
+bool isLeapYear(int year);
+bool isValidDate(const char* date);
 void getDate(char* date);
+bool isValidID(const char* id);
 void getID(char* id);
+
+void InputName(char* name, char* role);
+void InputSurname(char* surname, char* role);
 
 #endif
