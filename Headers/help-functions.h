@@ -3,6 +3,7 @@
 
 #include "patient.h"
 #include "doctor.h"
+#include "emergency.h"
 #include <stdbool.h>
 
 void ListAllPatients(HashTable* ht);
@@ -12,6 +13,7 @@ void PatientDetails(Patientptr patient);
 void ListAllSpecializations(SpecializationNodePtr root);
 void ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization);
 void ListAvailableAppointments(Doctor doctor);
+void ListAllEmergencyCases(PriorityQueue pq);
 
 void clearScreen();
 void clearBuffer();

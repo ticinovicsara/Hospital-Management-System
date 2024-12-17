@@ -1,4 +1,5 @@
 #include "../Headers/patient.h"
+#include "../Headers/appointment.h"
 #include "../Headers/help-functions.h"
 #include <stdlib.h>
 #include <stdio.h>
@@ -105,56 +106,3 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
 
     printf("Termin %s je uspjesno rezerviran za pacijenta %s %s kod doktora %s %s.\n", appointment, patient->name, patient->surname, doctor->name, doctor->surname);
 }
-
-bool isAppointmentAvailable(AppointmentNodePtr root, const char* date) {
-    if (root == NULL) {
-        return true;
-    }
-    int cmp = strcmp(date, root->appointment.date);
-    if (cmp < 0) {
-        return isAppointmentAvailable(root->left, date);
-    } else if (cmp > 0) {
-        return isAppointmentAvailable(root->right, date);
-    } else {
-        return false;
-    }
-}
-
-AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, int patientID) {
-    if (root == NULL) {
-        AppointmentNodePtr newNode = malloc(sizeof(AppointmentNode));
-        newNode->appointment.id = patientID;
-        strcpy(newNode->appointment.date, date);
-        newNode->left = newNode->right = NULL;
-        newNode->height = 1;
-        return newNode;
-    }
-    int cmp = strcmp(date, root->appointment.date);
-    if (cmp < 0) {
-        root->left = InsertAppointment(root->left, date, patientID);
-    } else if (cmp > 0) {
-        root->right = InsertAppointment(root->right, date, patientID);
-    }
-    return BalanceTree(root);
-}
-
-void AddToIllnessHistory(Patientptr patient, const char* date, const char* illness, const char* description) {
-    RecordPtr newRecord = malloc(sizeof(Record));
-    strcpy(newRecord->date, date);
-    strcpy(newRecord->ilness, illness);
-    strcpy(newRecord->description, description);
-    newRecord->next = patient->illnesses;
-    patient->illnesses = newRecord;
-}
-
-void AddToCheckupHistory(Patientptr patient, const char* date, const char* description) {
-    RecordPtr newRecord = malloc(sizeof(Record));
-    strcpy(newRecord->date, date);
-    strcpy(newRecord->ilness, "Pregled");
-    strcpy(newRecord->description, description);
-    newRecord->next = patient->checkups;
-    patient->checkups = newRecord;
-}
-
-
-

@@ -2,6 +2,7 @@
 #define PATIENT_H
 
 #include <stdbool.h>
+#include "doctor.h"
 
 #define MAX_NAME_LENGTH 50
 #define MAX_ILLNESS_LENGTH 50
@@ -38,15 +39,18 @@ typedef struct HashTable{
 }HashTable;
 
 HashTable* CreateHashTable(int size);
-void InsertPatient(HashTable* ht, Patientptr patient);
-Patientptr SearchPatientByID(HashTable* ht, const char* id);
-bool DeletePatient(HashTable* ht, const char* id, const char* surname);
 void ListAllPatients(HashTable* ht);
+
+Patientptr SearchPatientByID(HashTable* ht, const char* id);
 Patientptr SearchPatientBySurname(HashTable* ht, const char* surname);
+
+bool DeletePatient(HashTable* ht, const char* id, const char* surname);
 void DeletePatientByIDSurname(HashTable* ht);
-void AddPatient(HashTable ht);
+
 void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root);
 
+void InsertPatient(HashTable* ht, Patientptr patient);
+void AddPatient(HashTable ht);
 void AddToIllnessHistory(Patientptr patient, const char* date, const char* illness, const char* description);
 void AddToCheckupHistory(Patientptr patient, const char* date, const char* description);
 

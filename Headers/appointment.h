@@ -1,6 +1,5 @@
 #ifndef APPOINTMENT_H
 #define APPOINTMENT_H
-#include "patient.h"
 
 typedef struct _appointment{
     int id;
@@ -16,6 +15,7 @@ typedef struct _appointmentNode{
     AppointmentNodePtr right;
     int height;
 }AppointmentNode;
+
 
 bool isAppointmentAvailable(AppointmentNodePtr root, const char* date);
 AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, int patientID);
