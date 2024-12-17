@@ -131,7 +131,7 @@ void searchPatients(HashTable ht){
             char name[MAX_NAME_LENGTH];
             char surname[MAX_NAME_LENGTH];
 
-            InputSurname(surname);
+            InputSurname(surname, "pacijenta");
 
             Patientptr p = SearchPatientBySurname(&ht, surname);
             if(!p){

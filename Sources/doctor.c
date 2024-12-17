@@ -75,26 +75,21 @@ DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const
         return NULL;
     }
 
-    if (strcmp(name, root->specialization) < 0) {
-        SearchDoctorByName(root->left, name, surname);
-    }
-    else if (strcmp(name, root->specialization) > 0) {
-        SearchDoctorByName(root->right, name, surname);
-    }
-    else {
-        DoctorPtr current = root->doctors;
-        while (current) {
-            if (strcmp(current->name, name) == 0 && strcmp(current->surname, surname) == 0) {
-                return current;
-            }
-            current = current->next;
+    DoctorPtr foundDoctor = SearchDoctorByName(root->left, name, surname);
+    if (foundDoctor) return foundDoctor;
+
+    DoctorPtr currentDoctor = root->doctors;
+    while (currentDoctor != NULL) {
+        if (strcmp(currentDoctor->name, name) == 0 && strcmp(currentDoctor->surname, surname) == 0) {
+            return currentDoctor;
         }
+        currentDoctor = currentDoctor->next;
     }
 
-    return NULL;
+    return SearchDoctorByName(root->right, name, surname);
 }
 
-SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
+DoctorPtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
     if (!root) {
         return NULL;
     }

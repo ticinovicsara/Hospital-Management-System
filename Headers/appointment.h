@@ -17,5 +17,7 @@ typedef struct _appointmentNode{
     int height;
 }AppointmentNode;
 
+bool isAppointmentAvailable(AppointmentNodePtr root, const char* date);
+AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, int patientID);
 
 #endif

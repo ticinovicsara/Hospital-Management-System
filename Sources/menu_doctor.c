@@ -31,6 +31,8 @@ void showDoctorMenu(SpecializationNodePtr root){
                 break;
 
             case 5:
+                clearScreen();
+                ListAllDoctors(root);
                 break;
 
             case 0:

@@ -25,7 +25,7 @@ typedef struct _specializationNode{
 
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments);
 SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname);
-SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
+DoctorPtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
 DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname);
 
 #endif

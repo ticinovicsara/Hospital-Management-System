@@ -9,16 +9,17 @@ void ListAllPatients(HashTable* ht);
 void ListAllDoctors(SpecializationNodePtr root);
 void PrintDoctors(SpecializationNodePtr root);
 void PatientDetails(Patientptr patient);
+void ListAllSpecializations(SpecializationNodePtr root);
+void ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization);
+void ListAvailableAppointments(Doctor doctor);
 
 void clearScreen();
 void clearBuffer();
 
 bool stringIsValid(char* string);
-bool isValidDate(const char* date);
-void InputName(char* name);
-void InputSurname(char* surname);
-void getBirthDate(char* birthDate);
-bool isValidID(const char* id);
+void InputName(char* name, char* role)
+void InputSurname(char* surname, char* role);
+void getDate(char* date);
 void getID(char* id);
 
 #endif

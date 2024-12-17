@@ -62,12 +62,12 @@ bool isValidDate(const char* date) {
     return true;
 }
 
-void getBirthDate(char* birthDate){
+void getDate(char* date){
     while (1) {
-        printf("\nUnesite datum rodjenja u formatu (DD.MM.YYYY): ");
-        scanf("%s", birthDate);
+        printf("\nUnesite datum u formatu (DD.MM.YYYY): ");
+        scanf("%s", date);
 
-        if (isValidDate(birthDate)) {
+        if (isValidDate(date)) {
             break;
         } else {
             printf("Datum nije valjan, pokusajte ponovo.\n");
@@ -183,9 +183,9 @@ void ListAllDoctors(SpecializationNodePtr root){
     ListAllDoctors(root->right);
 }
 
-void InputName(char* name){
+void InputName(char* name, char* role){
     do {
-        printf("\nUnesite ime: ");
+        printf("\nUnesite ime %s: ", role);
         scanf("%s", name);
 
         if (!stringIsValid(name)) {
@@ -193,15 +193,89 @@ void InputName(char* name){
         }
     } while (!stringIsValid(name));
 }
-void InputSurname(char* surname) {
+void InputSurname(char* surname, char* role) {
     do {
-        printf("\nUnesite prezime: ");
+        printf("\nUnesite prezime %s: ", role);
         scanf("%s", surname);
 
         if (!stringIsValid(surname)) {
             printf("Neispravan unos, pokusajte ponovo.\n");
         }
     } while (!stringIsValid(surname));
+}
+
+
+void ListAllSpecializations(SpecializationNodePtr root){
+    printf("Dostupne specijalizacije: \n\n");
+
+    if(root == NULL){
+        return;
+    }
+
+    ListAllSpecializations(root->left);
+
+    printf("%s\n", root->specialization);
+    
+    ListAllSpecializations(root->right);
+}
+
+void ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization){
+    printf("Dostupni doktori u specijalizaciji '%s':\n", specialization);
+    
+    SpecializationNodePtr result = SearchDoctorBySpecialization(root, specialization);
+    if (result == NULL) {
+        printf("Specijalizacija '%s' nije pronadjena.\n\n", specialization);
+        return;
+    }
+
+    DoctorPtr doctor = root->doctors;
+    if (doctor == NULL) {
+        printf("Nema doktora za specijalizaciju '%s'\n\n", specialization);
+    } 
+    else {
+        while (doctor != NULL) {
+            printf("\t%s %s\n", doctor->name, doctor->surname);
+            doctor = doctor->next;
+        }
+    }
+}
+
+void ListAvailableAppointments(Doctor doctor){
+    printf("Dostupni termini doktora: %s %s\n\n", doctor->name, doctor->surname);
+
+    if (doctor == NULL) {
+        printf("Nema informacija o doktoru\n");
+        return;
+    }
+
+    if (doctor->appointments == NULL) {
+        printf("Trenutno nema zakazanih termina\n");
+        return;
+    }
+
+    int scheduledCount = 0;
+    InOrderAppointments(doctor->appointments, &scheduledCount);
+
+    int freeAppointments = doctor->availableAppointments - scheduledCount;
+
+    if (freeAppointments > 0) {
+        printf("\nBroj slobodnih termina: %d\n", freeAppointments);
+    } else {
+        printf("\nNema slobodnih termina.\n");
+    }
+}
+
+void InOrderAppointments(AppointmentNodePtr root, int* count) {
+    if (root == NULL) {
+        return;
+    }
+
+    InOrderAppointments(root->left, count);
+
+    printf("\tDatum: %s, Razlog: %s\n", root->appointment.id, root->appointment.date, root->appointment.reason);
+    (*count)++;
+
+    InOrderAppointments(root->right, count);
 }
 
 // void ListAllEmergencyCases(PriorityQueue pq){

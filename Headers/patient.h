@@ -21,8 +21,9 @@ typedef struct _patient{
     char id[10];
     char name[MAX_NAME_LENGTH];
     char surname[MAX_NAME_LENGTH];
-    char birthDate[15];
-    RecordPtr history;
+    char birthDate[MAX_DATE_LENGTH];
+    RecordPtr ilnesses;
+    RecordPtr checkups;
 }Patient;
 
 typedef struct _node* NodePosition;
@@ -44,5 +45,9 @@ void ListAllPatients(HashTable* ht);
 Patientptr SearchPatientBySurname(HashTable* ht, const char* surname);
 void DeletePatientByIDSurname(HashTable* ht);
 void AddPatient(HashTable ht);
+void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root);
+
+void AddToIllnessHistory(Patientptr patient, const char* date, const char* illness, const char* description);
+void AddToCheckupHistory(Patientptr patient, const char* date, const char* description);
 
 #endif
