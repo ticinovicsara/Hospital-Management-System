@@ -1,9 +1,9 @@
-#include "../Headers/patient.h"
-#include "../Headers/appointment.h"
-#include "../Headers/help-functions.h"
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "../Headers/patient.h"
+#include "../Headers/appointment.h"
+#include "../Headers/help-functions.h"
 
 void AddPatient(HashTable ht){
     printf("\nUnesite podatke za novog pacijenta:\n");

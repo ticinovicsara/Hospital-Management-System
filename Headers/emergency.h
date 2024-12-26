@@ -3,16 +3,16 @@
 
 #define MAX_QUEUE_SIZE 100
 
-typedef struct _emergencyCase{
+typedef struct{
     int id;
     char description[100];
     int priority;
 }EmergencyCase;
 
-typedef struct {
+typedef struct _priorityQueue{
     EmergencyCase queue[MAX_QUEUE_SIZE];
     int size;
-} PriorityQueue;
+}PriorityQueue;
 
 
 void showEmergencyCaseMenu(PriorityQueue* pq);

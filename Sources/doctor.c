@@ -1,7 +1,9 @@
-#include "../Headers/doctor.h"
 #include <stdio.h>
 #include <string.h>
 #include <stdlib.h>
+#include <stddef.h>
+
+#include "../Headers/doctor.h"
 
 SpecializationNodePtr rightRotation(SpecializationNodePtr root);
 SpecializationNodePtr leftRotation(SpecializationNodePtr root);

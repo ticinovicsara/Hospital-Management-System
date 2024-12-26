@@ -1,11 +1,12 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
 #include "../Headers/read_files.h"
 #include "../Headers/patient.h"
 #include "../Headers/doctor.h"
 #include "../Headers/appointment.h"
 #include "../Headers/emergency.h"
-#include <stdio.h>
-#include <stdlib.h>
-#include <string.h>
 
 #define BUFFER_SIZE 1024
 

@@ -1,11 +1,11 @@
+#include <stdio.h>
+#include <string.h>
+#include <stdlib.h>
 #include "../Headers/read_files.h"
 #include "../Headers/patient.h"
 #include "../Headers/help-functions.h"
 #include "../Headers/emergency.h"
 #include "../Headers/menus.h"
-#include <stdio.h>
-#include <string.h>
-#include <stdlib.h>
 
 int main(){
     HashTable* hash_table = CreateHashTable(11);

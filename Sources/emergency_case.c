@@ -1,7 +1,7 @@
-#include "../Headers/emergency.h"
 #include <stdlib.h>
 #include <stddef.h>
 #include <stdio.h>
+#include "../Headers/emergency.h"
 
 void initializeQueue(PriorityQueue* pq) {
     pq->size = 0;
@@ -24,7 +24,7 @@ void upheap(PriorityQueue* pq, int index) {
 
 void enqueue(PriorityQueue* pq, EmergencyCase newCase) {
     if (pq->size >= MAX_QUEUE_SIZE) {
-        printf("Red je pun, ne može se dodati novi hitan slučaj.\n");
+        printf("Red je pun, ne moze se dodati novi hitan slucaj.\n");
         return;
     }
 

@@ -1,7 +1,7 @@
-#include "../Headers/patient.h"
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
+#include "../Headers/patient.h"
 
 static int hash(const char* fname, const char* lname, int size){
     int hash_value = 0;

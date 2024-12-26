@@ -1,5 +1,5 @@
 #include <stdio.h>
-#include "emergency.h"
+#include "../Headers/emergency.h"
 #include "../Headers/help-functions.h"
 
 void showEmergencyCaseMenu(PriorityQueue* pq){
