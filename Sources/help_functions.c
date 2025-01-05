@@ -24,7 +24,7 @@ void clearBuffer(){
 
 
 bool stringIsValid(char* string){
-    for (int i = 0; i < strlen(string); i++) {
+    for (int i = 0; string[i] != '\0'; i++) {
         if (isdigit(string[i])) {
             return false;
         }
@@ -76,12 +76,13 @@ void getDate(char* date){
     }
 }
 
-bool isValidID(const char* id) {
-    if (strlen(id) == 0) {
+bool isValidID(char* id) {
+    int lenght = strlen(id);
+    if (lenght == 0) {
         return false;
     }
 
-    for (int i = 0; i < strlen(id); i++) {
+    for (int i = 0; i < lenght; i++) {
         if (!isdigit(id[i])) {
             return false;
         }
@@ -287,7 +288,7 @@ void InOrderAppointments(AppointmentNodePtr root, int* count) {
 
     InOrderAppointments(root->left, count);
 
-    printf("\tDatum: %s, Razlog: %s\n", root->appointment.id, root->appointment.date, root->appointment.reason);
+    printf("\tDatum: %s, Razlog: %s\n", root->appointment.date, root->appointment.reason);
     (*count)++;
 
     InOrderAppointments(root->right, count);

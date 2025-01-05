@@ -26,7 +26,7 @@ void ReadPatients(HashTable* ht){
             continue;
         }
 
-        newPatient->history = NULL; 
+        newPatient->ilnesses = NULL; 
 
         if (sscanf(buffer, "%49[^,],%49[^,],%14[^,]", newPatient->name, newPatient->surname, newPatient->birthDate) != 3) {
             printf("Greska pri parsiranju podataka pacijenta\n");
@@ -53,8 +53,8 @@ void ReadPatients(HashTable* ht){
                 strncpy(newRecord->date, date, MAX_DATE_LENGTH - 1);
                 strncpy(newRecord->description, description, MAX_DESCRIPTION_LENGTH - 1);
 
-                newRecord->next = newPatient->history;
-                newPatient->history = newRecord;
+                newRecord->next = newPatient->ilnesses;
+                newPatient->ilnesses = newRecord;
 
             } else {
                 printf("Greska pri parsiranju medicinskog zapisa: %s\n", record_token);

@@ -54,7 +54,7 @@ void showEmergencyCaseMenu(PriorityQueue* pq){
                 }
                 clearBuffer();
                 break;
-            case 2:
+            case 3:
                 clearScreen();
                 ListAllEmergencyCases(pq);
                 clearBuffer();

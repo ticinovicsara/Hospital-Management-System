@@ -111,16 +111,16 @@ bool DeletePatient(HashTable* ht, const char* id, const char* surname){
 
 
 void AddToIllnessHistory(Patientptr patient, const char* date, const char* illness, const char* description) {
-    RecordPtr newRecord = malloc(sizeof(Record));
+    RecordPtr newRecord = malloc(sizeof(MedicalRecord));
     strcpy(newRecord->date, date);
     strcpy(newRecord->ilness, illness);
     strcpy(newRecord->description, description);
-    newRecord->next = patient->illnesses;
-    patient->illnesses = newRecord;
+    newRecord->next = patient->ilnesses;
+    patient->ilnesses = newRecord;
 }
 
 void AddToCheckupHistory(Patientptr patient, const char* date, const char* description) {
-    RecordPtr newRecord = malloc(sizeof(Record));
+    RecordPtr newRecord = malloc(sizeof(MedicalRecord));
     strcpy(newRecord->date, date);
     strcpy(newRecord->ilness, "Pregled");
     strcpy(newRecord->description, description);

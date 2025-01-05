@@ -1,5 +1,3 @@
-EXEC = hospital
-
 SOURCES_DIR = Sources
 HEADERS_DIR = Headers
 OBJECTS_DIR = Objects
@@ -10,6 +8,7 @@ LDFLAGS =
 
 SOURCES = $(wildcard $(SOURCES_DIR)/*.c)
 OBJECTS = $(patsubst $(SOURCES_DIR)/%.c, $(OBJECTS_DIR)/%.o, $(SOURCES))
+EXEC = hospital
 
 $(EXEC): $(OBJECTS)
 	$(CC) $(OBJECTS) -o $(EXEC) $(LDFLAGS)

@@ -28,7 +28,7 @@ bool stringIsValid(char* string);
 bool isLeapYear(int year);
 bool isValidDate(const char* date);
 void getDate(char* date);
-bool isValidID(const char* id);
+bool isValidID(char* id);
 void getID(char* id);
 
 void InputName(char* name, char* role);

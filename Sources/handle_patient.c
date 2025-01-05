@@ -37,7 +37,7 @@ void AddPatient(HashTable ht){
 }
 
 
-void DeletePatientByIDSurname(HashTable* ht){
+void DeletePatientByIDSurname(HashTable* ht) {
     printf("Brisanje pacijenta po ID-u i prezimenu:\n");
 
     char id[10];

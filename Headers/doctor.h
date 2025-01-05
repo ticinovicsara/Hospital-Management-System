@@ -4,24 +4,25 @@
 #include "patient.h"
 #include "appointment.h"
 
-typedef struct _doctor* DoctorPtr;
 typedef struct _doctor{
     char name[MAX_NAME_LENGTH];
     char surname[MAX_NAME_LENGTH];
     AppointmentNodePtr appointments;
     int availableAppointments;
-    DoctorPtr next;
+    struct _doctor* next;
 }Doctor;
 
-typedef struct _specializationNode* SpecializationNodePtr;
+typedef Doctor* DoctorPtr;
+
 typedef struct _specializationNode{
     char specialization[MAX_NAME_LENGTH];
     DoctorPtr doctors;
-    SpecializationNodePtr left;
-    SpecializationNodePtr right;
+    struct _specializationNode* left;
+    struct _specializationNode* right;
     int height;
 }SpecializationNode;
 
+typedef SpecializationNode* SpecializationNodePtr;
 
 SpecializationNodePtr BalanceTree(SpecializationNodePtr root);
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments);

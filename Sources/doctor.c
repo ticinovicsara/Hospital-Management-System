@@ -2,9 +2,9 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stddef.h>
-
 #include "../Headers/doctor.h"
 
+SpecializationNodePtr rotate(SpecializationNodePtr root, int direction);
 SpecializationNodePtr rightRotation(SpecializationNodePtr root);
 SpecializationNodePtr leftRotation(SpecializationNodePtr root);
 int max(int a, int b);
@@ -16,19 +16,18 @@ SpecializationNodePtr BalanceTree(SpecializationNodePtr root){
 
     int balance = getBalance(root);
 
-    if (balance > 1 && getBalance(root->left) >= 0) {
-        return rightRotation(root);
+    if (balance > 1) {
+        if (getBalance(root->left) < 0) {
+            root->left = rotate(root->left, 1);
+        }
+        return rotate(root, 0);
     }
-    if (balance < -1 && getBalance(root->right) <= 0) {
-        return leftRotation(root);
-    }
-    if (balance > 1 && getBalance(root->left) < 0) {
-        root->left = leftRotation(root->left);
-        return rightRotation(root);
-    }
-    if (balance < -1 && getBalance(root->right) > 0) {
-        root->right = rightRotation(root->right);
-        return leftRotation(root);
+
+    if (balance < -1) {
+        if (getBalance(root->right) > 0) {
+            root->right = rotate(root->right, 0);
+        }
+        return rotate(root, 1);
     }
 
     return root;
