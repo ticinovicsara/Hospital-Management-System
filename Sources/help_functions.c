@@ -262,7 +262,7 @@ void getNumberInput(char* input) {
         }
 
         if (!validInput) {
-            printf("Uneseni unos nije broj, pokusajte ponovo.\n\n");
+            printf("Unos nije broj, pokusajte ponovo.\n\n");
         }
     } while (!validInput);
 }

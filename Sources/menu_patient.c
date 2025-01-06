@@ -47,6 +47,7 @@ void showPatientMenu(HashTable* hash_table, SpecializationNodePtr root){
             case 2:
                 clearScreen();
                 deletePatient(*hash_table);
+                getchar();
                 break;
             case 3:
                 clearScreen();
