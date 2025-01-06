@@ -57,10 +57,20 @@ static void SearchDoctorBy(SpecializationNodePtr root){
         printf("Trazenje doktora prema: \n");
         printf("1 - Imenu i prezimenu\n");
         printf("2 - Svi doktori odredjene specijalizacije\n");
-        printf("\n0 - Povratak\n");
+        printf("\n0 - Povratak\n\n: ");
 
+        char input[100];
         int option;
-        scanf("%d", &option);
+
+        if (!fgets(input, sizeof(input), stdin)) {
+            printf("Greska pri citanju unosa, pokusajte ponovo.\n");
+            continue;
+        }
+        if (sscanf(input, "%d", &option) != 1) {
+            clearScreen();
+            printf("Neispravan unos, pokusajte ponovo.\n\n");
+            continue;
+        }
 
         switch(option){
             case 1:
@@ -73,7 +83,9 @@ static void SearchDoctorBy(SpecializationNodePtr root){
 
                 DoctorPtr doctor = SearchDoctorByName(root, name, surname);
                 if(!doctor){
+                    clearScreen();
                     printf("Doktor '%s %s'nije prodnadjen\n", name, surname);
+                    return;
                 }
 
                 printf("     --------------------------------------------------------------------------\n");
@@ -92,6 +104,7 @@ static void SearchDoctorBy(SpecializationNodePtr root){
 
                 bool found = true;
                 if(found){
+                    clearScreen();
                     ListDoctorsBySpecialization(root, specialization);
                 }
 
@@ -105,6 +118,7 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 return;
 
             default:
+                clearScreen();
                 printf("Neispravan unos, unesite ponovno\n");
                 break;
         }

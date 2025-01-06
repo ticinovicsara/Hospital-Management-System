@@ -113,4 +113,5 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
 
     clearScreen();
     printf("Termin %s je uspjesno rezerviran za pacijenta '%s %s' kod doktora '%s %s'.\n", appointment, patient->name, patient->surname, doctor->name, doctor->surname);
+    getchar();
 }

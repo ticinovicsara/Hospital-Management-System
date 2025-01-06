@@ -43,35 +43,28 @@ void showPatientMenu(HashTable* hash_table, SpecializationNodePtr root){
             case 1:
                 clearScreen();
                 AddPatient(*hash_table);
-                clearBuffer();
                 break;
             case 2:
                 clearScreen();
                 deletePatient(*hash_table);
-                clearBuffer();
                 break;
             case 3:
                 clearScreen();
                 searchPatients(*hash_table);
-                clearBuffer();
                 break;
             case 4:
                 clearScreen();
                 ReserveAnAppointment(*hash_table, root);
-                clearBuffer();
                 break;
             case 5:
                 clearScreen();
                 ListAllPatients(hash_table);
-                clearBuffer();
                 break;
             case 0:
-                clearBuffer();
                 clearScreen();
                 return;
             default:
                 clearScreen();
-                clearBuffer();
                 printf("Neispravan unos, pokusajte ponovo.\n\n");
                 break;
         }
@@ -103,23 +96,17 @@ void searchPatients(HashTable ht){
             printf("Neispravan unos, pokusajte ponovo.\n\n");
             continue;
         }
-
-        if (sscanf(input, "%d", &option) != 1) {
-            clearScreen();
-            printf("\nNeispravan unos, unesite broj.\n\n");
-            continue;
-        }
         
         if (option == 1) {
             char id[10];
-            getID(id);
             getchar();
+            getID(id);
 
             Patientptr p = SearchPatientByID(&ht, id);
             if(!p){
                 clearScreen();
                 printf("\nPacijent s ID: '%s' nije nadjen\n", p->id);
-                break;
+                continue;
             }
             PatientDetails(p);
             break;
@@ -133,7 +120,7 @@ void searchPatients(HashTable ht){
             if(!p){
                 clearScreen();
                 printf("Pacijent s imenom '%s' nije nadjen\n\n", p->name);
-                break;
+                continue;
             }
 
             PatientDetails(p);

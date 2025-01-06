@@ -96,51 +96,25 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
     return root;
 }
 
-DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname) {
-    if (root == NULL) {
+
+DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname){
+    if (!root) {
         return NULL;
     }
 
-   SpecializationNodePtr specNode = root;
-    while (specNode != NULL) {
-        DoctorPtr doctor = specNode->doctors;
-        while (doctor != NULL) {
-            if (strcmp(doctor->name, name) == 0 && strcmp(doctor->surname, surname) == 0) {
-                return doctor;
-            }
-            doctor = doctor->next;
-        }
+    DoctorPtr foundDoctor = SearchDoctorByName(root->left, name, surname);
+    if (foundDoctor) return foundDoctor;
 
-        if (strcmp(name, specNode->specialization) < 0) {
-            specNode = specNode->left;
-        } else {
-            specNode = specNode->right;
+    DoctorPtr currentDoctor = root->doctors;
+    while (currentDoctor != NULL) {
+        if (strcmp(currentDoctor->name, name) == 0 && strcmp(currentDoctor->surname, surname) == 0){
+            return currentDoctor;
         }
+        currentDoctor = currentDoctor->next;
     }
 
-    return NULL;
+    return SearchDoctorByName(root->right, name, surname);
 }
-
-
-
-// DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname){
-//     if (!root) {
-//         return NULL;
-//     }
-
-//     DoctorPtr foundDoctor = SearchDoctorByName(root->left, name, surname);
-//     if (foundDoctor) return foundDoctor;
-
-//     DoctorPtr currentDoctor = root->doctors;
-//     while (currentDoctor != NULL) {
-//         if (strcmp(currentDoctor->name, name) == 0 && strcmp(currentDoctor->surname, surname) == 0){
-//             return currentDoctor;
-//         }
-//         currentDoctor = currentDoctor->next;
-//     }
-
-//     return SearchDoctorByName(root->right, name, surname);
-// }
 
 SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
     if (!root) {

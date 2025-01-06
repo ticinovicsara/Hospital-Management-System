@@ -28,9 +28,9 @@ int main(){
     clearScreen();
 
     while (1) {
-        printf("   ------------------------------------");
-        printf("\n  <     HOSPITAL MANAGEMENT SYSTEM    >\n");
-        printf("   ------------------------------------\n\n");
+        printf("  ------------------------------------");
+        printf("\n <     HOSPITAL MANAGEMENT SYSTEM    >\n");
+        printf("  ------------------------------------\n\n");
         printf("Dobrodosli! Za nastavak odaberite radnju:\n\n");
         printf("1 - Pacijenti\n");
         printf("2 - Doktori\n");

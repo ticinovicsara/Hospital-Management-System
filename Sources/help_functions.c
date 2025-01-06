@@ -131,7 +131,7 @@ void PatientDetails(Patientptr patient){
     printf("Datum rođenja:\t\t%s\n", patient->birthDate);
     printf("\n\n------------------------ POVIJEST BOLESTI ------------------------\n");
     printf("%-20s %-15s %-30s\n", "Bolest", "Datum", "Opis");
-    printf("---------------------------------------------------------------\n");
+    printf("------------------------------------------------------------------\n");
     RecordPtr temp = patient->ilnesses;
     if (temp == NULL) {
         printf("\nNema podataka o bolesti\n");
@@ -142,9 +142,9 @@ void PatientDetails(Patientptr patient){
         }
     }
 
-    printf("\n\n------------------------ POVIJEST PREGLEDA ----------------------\n");
+    printf("\n\n------------------------ POVIJEST PREGLEDA -----------------------\n");
     printf("%-20s %-15s %-30s\n", "Vrsta pregleda", "Datum", "Opis");
-    printf("---------------------------------------------------------------\n");
+    printf("------------------------------------------------------------------\n");
 
     RecordPtr checkupTemp = patient->checkups;
     if (checkupTemp == NULL) {
@@ -155,8 +155,9 @@ void PatientDetails(Patientptr patient){
             checkupTemp = checkupTemp->next;
         }
     }
-    printf("\n---------------------------------------------------------------\n");
+    printf("\n------------------------------------------------------------------\n");
     PressAnyKey();
+    clearScreen();
 }
 
 void ListAllPatients(HashTable* ht) {
@@ -286,23 +287,29 @@ void PrintSpecializations(SpecializationNodePtr root) {
 }
 
 bool ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization){
-    printf("\nDoktori u specijalizaciji '%s':\n", specialization);
-    
     SpecializationNodePtr result = SearchDoctorBySpecialization(root, specialization);
     if (result == NULL) {
+        printf("Nema doktora za specijalizaciju '%s'\n", specialization);
         return false;
     }
 
-    DoctorPtr doctor = root->doctors;
+    printf("\nDoktori u specijalizaciji:\n\n");
+
+    printf("\n---------------------\n");
+    printf("    %s", specialization);
+    printf("\n---------------------\n");
+
+    DoctorPtr doctor = result->doctors;
     if (doctor == NULL) {
         return false;
     } 
     else {
         while (doctor != NULL) {
-            printf("\t%s %s\n", doctor->name , doctor->surname);
+            printf("\n -> %s %s\n", doctor->name , doctor->surname);
             doctor = doctor->next;
         }
     }
+    printf("\n---------------------\n");
 
     return true;
 }
