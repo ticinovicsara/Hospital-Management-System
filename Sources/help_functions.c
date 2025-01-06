@@ -10,6 +10,8 @@
 #include "../Headers/help-functions.h"
 #include "../Headers/emergency.h"
 
+static void ListAllSpecializations(SpecializationNodePtr root);
+
 void clearScreen(){
     for (int i = 0; i < 50; i++) {
         printf("\n");
@@ -28,9 +30,9 @@ int max(int a, int b) {
 }
 
 void PressAnyKey(){
-    printf("\nPristisnite bilo sto za nastavak...");
+    clearBuffer();
+    printf("\nPristisnite bilo sto za nastavak...\n\n");
     getchar();
-    clearScreen();
 }
 
 
@@ -140,7 +142,7 @@ void PatientDetails(Patientptr patient){
         }
     }
 
-    printf("\n------------------------ POVIJEST PREGLEDA ----------------------\n");
+    printf("\n\n------------------------ POVIJEST PREGLEDA ----------------------\n");
     printf("%-20s %-15s %-30s\n", "Vrsta pregleda", "Datum", "Opis");
     printf("---------------------------------------------------------------\n");
 
@@ -155,7 +157,6 @@ void PatientDetails(Patientptr patient){
     }
     printf("\n---------------------------------------------------------------\n");
     PressAnyKey();
-    return;
 }
 
 void ListAllPatients(HashTable* ht) {
@@ -186,6 +187,8 @@ void PrintDoctors(SpecializationNodePtr root) {
 
     ListAllDoctors(root);
     printf("\n\n");
+    PressAnyKey();
+    clearScreen();
 }
 
 void ListAllDoctors(SpecializationNodePtr root){
@@ -207,61 +210,101 @@ void ListAllDoctors(SpecializationNodePtr root){
     ListAllDoctors(root->right);
 }
 
-void InputName(char* name, char* role){
+void Input(char* message, char* input, char* role){
     do {
-        printf("\nUnesite ime %s: ", role);
-        scanf("%s", name);
+        printf("\nUnesite %s %s: ", message, role);
+        scanf("%s", input);
 
-        if (!stringIsValid(name)) {
+        if (!stringIsValid(input)) {
             printf("Neispravan unos, pokusajte ponovo.\n");
         }
-    } while (!stringIsValid(name));
+    } while (!stringIsValid(input));
 }
-void InputSurname(char* surname, char* role) {
+
+void InputNumberBetween(char* message, int* priority, int min, int max) {
+    int valid = 0;
+    char buffer[100];
+
     do {
-        printf("\nUnesite prezime %s: ", role);
-        scanf("%s", surname);
+        printf("\n%s (%d - %d): ", message, min, max);
+        
+        if (fgets(buffer, sizeof(buffer), stdin) != NULL) {
+            buffer[strcspn(buffer, "\n")] = '\0';
 
-        if (!stringIsValid(surname)) {
-            printf("Neispravan unos, pokusajte ponovo.\n");
+            if (sscanf(buffer, "%d", priority) == 1 && *priority >= min && *priority <= max) {
+                valid = 1;
+            } else {
+                printf("\nNeispravan unos, unesite broj u opsegu od %d do %d.\n", min, max);
+            }
+        } else {
+            clearScreen();
+            printf("Neispravan, pokusajte ponovo.\n");
         }
-    } while (!stringIsValid(surname));
+    } while (!valid);
+}
+
+void getNumberInput(char* input) {
+    int validInput = 0;
+
+    do {
+        printf("Unesite broj: ");
+        fgets(input, 10, stdin);
+
+        input[strcspn(input, "\n")] = '\0';
+
+        validInput = 1;
+        for (int i = 0; input[i] != '\0' && input[i] != '\n'; i++) {
+            if (!isdigit(input[i])) {
+                validInput = 0;
+                break;
+            }
+        }
+
+        if (!validInput) {
+            printf("Uneseni unos nije broj, pokusajte ponovo.\n\n");
+        }
+    } while (!validInput);
 }
 
 
-void ListAllSpecializations(SpecializationNodePtr root){
-    printf("Dostupne specijalizacije: \n\n");
-
-    if(root == NULL){
+static void ListAllSpecializations(SpecializationNodePtr root) {
+    if (root == NULL) {
         return;
     }
 
     ListAllSpecializations(root->left);
 
-    printf("%s\n", root->specialization);
-    
+    printf("-> %s\n", root->specialization);
+
     ListAllSpecializations(root->right);
 }
 
-void ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization){
-    printf("Dostupni doktori u specijalizaciji '%s':\n", specialization);
+void PrintSpecializations(SpecializationNodePtr root) {
+    printf("\n\n--- Trenutne specijalizacije ---\n");
+    ListAllSpecializations(root);
+    printf("---------------------------------\n");
+}
+
+bool ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization){
+    printf("\nDoktori u specijalizaciji '%s':\n", specialization);
     
     SpecializationNodePtr result = SearchDoctorBySpecialization(root, specialization);
     if (result == NULL) {
-        printf("Specijalizacija '%s' nije pronadjena.\n\n", specialization);
-        return;
+        return false;
     }
 
     DoctorPtr doctor = root->doctors;
     if (doctor == NULL) {
-        printf("Nema doktora za specijalizaciju '%s'\n\n", specialization);
+        return false;
     } 
     else {
         while (doctor != NULL) {
-            printf("\t%s %s\n", doctor->name, doctor->surname);
+            printf("\t%s %s\n", doctor->name , doctor->surname);
             doctor = doctor->next;
         }
     }
+
+    return true;
 }
 
 void ListAvailableAppointments(DoctorPtr doctor){
@@ -308,10 +351,21 @@ void ListAllEmergencyCases(PriorityQueue* pq){
         return;
     }
 
-    printf("Hitni slucajevi u redu:\n");
+    printf("\nHitni slucajevi u redu:\n");
+    printf("     -----------------------------------------------------------------\n");
+    printf("     \tPRIORITET\tID PACIJENTA\t\tOPIS\n");
+    printf("     -----------------------------------------------------------------\n");
+
     for (int i = 0; i < pq->size; i++) {
-        printf("ID: %s, Opis: %s, Prioritet: %d\n", pq->queue[i].id, pq->queue[i].description, pq->queue[i].priority);
+        printf("\t%-10d\t%-15s\t\t%-20s\n", 
+               pq->queue[i].priority, 
+               pq->queue[i].patientId, 
+               pq->queue[i].description);
     }
+
+    printf("     -----------------------------------------------------------------\n\n");
+    PressAnyKey();
+    clearScreen();
 }
 
 void PrintIllnessHistory(Patientptr patient) {

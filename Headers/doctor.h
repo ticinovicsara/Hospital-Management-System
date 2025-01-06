@@ -30,4 +30,7 @@ SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name,
 SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
 DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname);
 
+void AddDoctor(SpecializationNodePtr* root);
+void DeleteDoctorByNameSurname(SpecializationNodePtr root);
+
 #endif

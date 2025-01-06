@@ -2,9 +2,10 @@
 #define EMERGENCYCASE_H
 
 #define MAX_QUEUE_SIZE 100
+#include "patient.h"
 
-typedef struct{
-    char id[10];
+typedef struct _emergencyCase{
+    char patientId[10];
     char description[100];
     int priority;
 }EmergencyCase;
@@ -15,12 +16,14 @@ typedef struct _priorityQueue{
 }PriorityQueue;
 
 
-void showEmergencyCaseMenu(PriorityQueue* pq);
+void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht);
 void initializeQueue(PriorityQueue* pq);
 void upheap(PriorityQueue* pq, int index);
 void enqueue(PriorityQueue* pq, EmergencyCase newCase);
 void downheap(PriorityQueue* pq, int index);
 EmergencyCase dequeue(PriorityQueue* pq);
 EmergencyCase peek(PriorityQueue* pq);
+
+void AddEmergencyCase(PriorityQueue* pq, HashTable* ht);
 
 #endif

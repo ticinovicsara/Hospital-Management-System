@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../Headers/patient.h"
+#include "../Headers/help-functions.h"
 
 static int hash(const char* surname, int size){
     int hash_value = 0;
@@ -60,15 +61,37 @@ Patientptr SearchPatientBySurname(HashTable* ht, const char* surname){
 }
 
 Patientptr SearchPatientByID(HashTable* ht, const char* id){
+    int foundCount = 0;
+    Patientptr candidates[10];
+    int candidateCount = 0;
+    
     for(int i = 0; i < ht->size; i++) {
         NodePosition current = ht->buckets[i];
         while (current != NULL) {
             if (strcmp(current->patient->id, id) == 0) {
-                return current->patient;
+                candidates[candidateCount++] = current->patient;
+                foundCount++;
             }
             current = current->next;
         }
     }
+    
+    if (foundCount == 1) {
+        return candidates[0];
+    }
+
+    if (foundCount > 2) {
+        printf("\nVise pacijenata sa istim ID-om pronadjeno.\n");
+        char surname[MAX_NAME_LENGTH];
+        Input("prezime", surname, "pacijenta");
+
+        for (int i = 0; i < candidateCount; i++) {
+            if (strcmp(candidates[i]->surname, surname) == 0) {
+                return candidates[i];
+            }
+        }
+    }
+
     return NULL; 
 }
 

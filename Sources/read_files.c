@@ -109,7 +109,7 @@ void ReadEmergencyCases(PriorityQueue* pq){
 
     char buffer[BUFFER_SIZE];
     while (fgets(buffer, BUFFER_SIZE, fp)) {
-        if (sscanf(buffer, "%10[^,],%99[^,],%d", newCase->id, newCase->description, &newCase->priority) == 3) {
+        if (sscanf(buffer, "%10[^,],%99[^,],%d", newCase->patientId, newCase->description, &newCase->priority) == 3) {
             enqueue(pq, *newCase);
         }
         else{

@@ -97,23 +97,50 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
 }
 
 DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname) {
-    if (!root) {
+    if (root == NULL) {
         return NULL;
     }
 
-    DoctorPtr foundDoctor = SearchDoctorByName(root->left, name, surname);
-    if (foundDoctor) return foundDoctor;
-
-    DoctorPtr currentDoctor = root->doctors;
-    while (currentDoctor != NULL) {
-        if (strcmp(currentDoctor->name, name) == 0 && strcmp(currentDoctor->surname, surname) == 0) {
-            return currentDoctor;
+   SpecializationNodePtr specNode = root;
+    while (specNode != NULL) {
+        DoctorPtr doctor = specNode->doctors;
+        while (doctor != NULL) {
+            if (strcmp(doctor->name, name) == 0 && strcmp(doctor->surname, surname) == 0) {
+                return doctor;
+            }
+            doctor = doctor->next;
         }
-        currentDoctor = currentDoctor->next;
+
+        if (strcmp(name, specNode->specialization) < 0) {
+            specNode = specNode->left;
+        } else {
+            specNode = specNode->right;
+        }
     }
 
-    return SearchDoctorByName(root->right, name, surname);
+    return NULL;
 }
+
+
+
+// DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname){
+//     if (!root) {
+//         return NULL;
+//     }
+
+//     DoctorPtr foundDoctor = SearchDoctorByName(root->left, name, surname);
+//     if (foundDoctor) return foundDoctor;
+
+//     DoctorPtr currentDoctor = root->doctors;
+//     while (currentDoctor != NULL) {
+//         if (strcmp(currentDoctor->name, name) == 0 && strcmp(currentDoctor->surname, surname) == 0){
+//             return currentDoctor;
+//         }
+//         currentDoctor = currentDoctor->next;
+//     }
+
+//     return SearchDoctorByName(root->right, name, surname);
+// }
 
 SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization) {
     if (!root) {
@@ -131,52 +158,50 @@ SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, c
     }
 }
 
-SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname) {
+SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname){
     if (!root) {
         return NULL;
     }
 
-    if (strcmp(name, root->specialization) < 0) {
-        root->left = DeleteDoctor(root->left, name, surname);
-    }
-    else if (strcmp(name, root->specialization) > 0) {
-        root->right = DeleteDoctor(root->right, name, surname);
-    }
-    else {
-        DoctorPtr prev = NULL;
-        DoctorPtr current = root->doctors;
+    DoctorPtr prev = NULL;
+    DoctorPtr current = root->doctors;
 
-        while (current != NULL) {
-            if (strcmp(current->name, name) == 0 && strcmp(current->surname, surname) == 0) {
-                if (prev) {
-                    prev->next = current->next;
-                } else {
-                    root->doctors = current->next;
-                }
-
-                free(current);
-                printf("Doktor %s %s obrisan\n", name, surname);
-                return root;
+     while (current != NULL) {
+        if (strcmp(current->name, name) == 0 && strcmp(current->surname, surname) == 0) {
+            if (prev) {
+                prev->next = current->next;
+            } else {
+                root->doctors = current->next;
             }
-            prev = current;
-            current = current->next;
+
+            free(current);
+
+            root = BalanceTree(root);
+            return root;
         }
+        prev = current;
+        current = current->next;
     }
+
+    root->left = DeleteDoctor(root->left, name, surname);
+    root->right = DeleteDoctor(root->right, name, surname);
+
+    root = BalanceTree(root);
 
     return root;
 }
 
-static int getHeight(SpecializationNodePtr node) {
+static int getHeight(SpecializationNodePtr node){
     if (!node) return 0;
     return node->height;
 }
 
-static int getBalance(SpecializationNodePtr node) {
+static int getBalance(SpecializationNodePtr node){
     if (!node) return 0;
     return getHeight(node->left) - getHeight(node->right);
 }
 
-static SpecializationNodePtr rotate(SpecializationNodePtr root, int direction) {
+static SpecializationNodePtr rotate(SpecializationNodePtr root, int direction){
     SpecializationNodePtr newRoot;
 
     if (direction == 0) {
@@ -197,10 +222,10 @@ static SpecializationNodePtr rotate(SpecializationNodePtr root, int direction) {
 }
 
 
-static SpecializationNodePtr rightRotation(SpecializationNodePtr root) {
+static SpecializationNodePtr rightRotation(SpecializationNodePtr root){
     return rotate(root, 0);
 }
 
-static SpecializationNodePtr leftRotation(SpecializationNodePtr root) {
+static SpecializationNodePtr leftRotation(SpecializationNodePtr root){
     return rotate(root, 1);
 }

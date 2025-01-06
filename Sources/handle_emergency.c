@@ -1,46 +1,33 @@
-#include <stdio.h>
 #include "../Headers/emergency.h"
 #include "../Headers/help-functions.h"
+#include <stdio.h> 
+#include <string.h>
 
 
-void manageEmergencyCase(PriorityQueue* pq){
-    while(true){
+void AddEmergencyCase(PriorityQueue* pq, HashTable* ht){
+    EmergencyCase newCase;
+    ListAllPatients(ht);
+
+    char id[10];
+    getNumberInput(id);
+    Patientptr patient = SearchPatientByID(ht, id);
+    if(!patient){
         clearScreen();
-        printf("\nUpravljanje hitnim slucajevima:\n");
-        printf("1 - Dodaj hitni slucaj\n");
-        printf("2 - Pogledaj najhitniji slucaj\n");
-        printf("\n0 - Povratak\n");
-        printf(": ");
-
-        int option;
-        scanf("%d", &option);
-
-        switch (option) {
-            case 1:
-                    EmergencyCase newCase;
-                    printf("Unesite ID hitnog slucaja: ");
-                    scanf("%s", newCase.id);
-                    printf("Unesite opis hitnog slucaja: ");
-                    getchar();
-                    fgets(newCase.description, sizeof(newCase.description), stdin);
-                    printf("Unesite prioritet hitnog slucaja (manji broj = veci prioritet): ");
-                    scanf("%d", &newCase.priority);
-                    
-                    enqueue(pq, newCase);
-                    printf("Hitni slucaj dodan\n");
-                    break;
-            case 2:
-                    EmergencyCase topCase = peek(pq);
-                    if (topCase.id != 0) {
-                        printf("Najhitniji slucaj: ID: %s, Opis: %s, Prioritet: %d\n", topCase.id, topCase.description, topCase.priority);
-                    }
-                    break;
-                    break;
-            case 0:
-                return;
-            default:
-                printf("Neispravan unos, pokusajte ponovo.\n");
-                break;
-        }
+        printf("Pacijent s ID-om '%s' nije nadjen\n", id);
+        return;
     }
+
+    strcpy(newCase.patientId, id);
+
+    Input("opis", newCase.description, "hitnog slucaja");
+
+    clearBuffer();
+
+    int priority;
+    InputNumberBetween("Unesite prioritet hitnog slucaja (manji broj = veci prioritet)", &priority, 1, 10);
+    newCase.priority = priority;
+
+    enqueue(pq, newCase);
+    clearScreen();                 
+    printf("Hitni slucaj dodan\n");
 }

@@ -1,8 +1,9 @@
 #include <stdio.h>
 #include "../Headers/emergency.h"
 #include "../Headers/help-functions.h"
+#include "../Headers/patient.h"
 
-void showEmergencyCaseMenu(PriorityQueue* pq){
+void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht){
     while(true){
         printf("\n---- HITNI SLUCAJEVI ----\n\n");
         printf("1 - Dodaj hitni slucaj\n");
@@ -34,30 +35,25 @@ void showEmergencyCaseMenu(PriorityQueue* pq){
         switch (option) {
             case 1:
                 clearScreen();
-                EmergencyCase newCase;
-                getID(newCase.id);
-                printf("Unesite opis hitnog slucaja: ");
-                getchar();
-                fgets(newCase.description, sizeof(newCase.description), stdin);
-                printf("Unesite prioritet hitnog slucaja (manji broj = veci prioritet): ");
-                scanf("%d", &newCase.priority);
-                    
-                enqueue(pq, newCase);
-                printf("Hitni slucaj dodan\n");
-                clearBuffer();
+                AddEmergencyCase(pq, ht);
                 break;
             case 2:
                 clearScreen();
                 EmergencyCase topCase = peek(pq);
-                if (topCase.id[0] != '\0') {
-                    printf("Najhitniji slucaj: ID: %s, Opis: %s, Prioritet: %d\n", topCase.id, topCase.description, topCase.priority);
+                if (topCase.patientId[0] != '\0') {
+                    printf("Najhitniji slucaj:\n\n");
+                    printf("   ---------------------------------------------------------------\n");
+                    printf("     Prioritet      ID pacijenta           Opis\n");
+                    printf("   ---------------------------------------------------------------\n");
+                    printf("        %d              %s              %s\n", topCase.priority, topCase.patientId, topCase.description);
+                    printf("   ---------------------------------------------------------------\n");
                 }
-                clearBuffer();
+                PressAnyKey();
+                clearScreen();
                 break;
             case 3:
                 clearScreen();
                 ListAllEmergencyCases(pq);
-                clearBuffer();
                 break;
             case 0:
                 clearBuffer();

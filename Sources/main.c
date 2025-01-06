@@ -55,7 +55,7 @@ int main(){
         switch (option) {
             case 1:
                 clearScreen();
-                showPatientMenu(hash_table);
+                showPatientMenu(hash_table, root);
                 break;
             case 2:
                 clearScreen();
@@ -63,10 +63,10 @@ int main(){
                 break;
             case 3:
                 clearScreen();
-                showEmergencyCaseMenu(pq);
+                showEmergencyCaseMenu(pq, hash_table);
                 break;
             case 0:
-                printf("Izlaz iz programa...\n");
+                printf("\nByee!\n");
                 exit(0);
                 break;
             default:

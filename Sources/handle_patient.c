@@ -1,6 +1,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
+#include "../Headers/doctor.h"
 #include "../Headers/patient.h"
 #include "../Headers/appointment.h"
 #include "../Headers/help-functions.h"
@@ -17,8 +18,8 @@ void AddPatient(HashTable ht){
     char name[MAX_NAME_LENGTH];
     char surname[MAX_NAME_LENGTH];
 
-    InputName(name, "pacijenta");
-    InputSurname(surname, "pacijenta");
+    Input("ime", name, "pacijenta");
+    Input("prezime", surname, "pacijenta");
     strcpy(newPatient->name, name);
     strcpy(newPatient->surname, surname);
 
@@ -45,7 +46,7 @@ void DeletePatientByIDSurname(HashTable* ht) {
 
     getID(id);
     
-    InputSurname(surname, "pacijenta");
+    Input("prezime", surname, "pacijenta");
 
     if(!DeletePatient(ht, id, surname)){
         clearScreen();
@@ -59,26 +60,30 @@ void DeletePatientByIDSurname(HashTable* ht) {
 
 
 void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
-    printf("Rezerviranje termina kod doktora:\n");
+    printf("--- Rezerviranje termina kod doktora ---\n");
 
     char specialization[MAX_NAME_LENGTH];
     char doctorName[MAX_NAME_LENGTH];
     char doctorSurname[MAX_NAME_LENGTH];
     char appointment[MAX_DATE_LENGTH];
 
-    printf("\nUnesite specijalizaciju: ");
-    ListAllSpecializations(root);
+    PrintSpecializations(root);
+    printf("\n\nUnesite specijalizaciju: ");
     fgets(specialization, MAX_NAME_LENGTH, stdin);
-    specialization[strcspn(specialization, "\n")] = '\0';  // Uklanja newline karakter
+    specialization[strcspn(specialization, "\n")] = '\0';
 
-
-    ListDoctorsBySpecialization(root, specialization);
-    InputName(doctorName, "doktora");
-    InputSurname(doctorSurname, "doktora");
+    if(!ListDoctorsBySpecialization(root, specialization)){
+        clearScreen();
+        printf("Nema doktora za specijalizaciju '%s'\n", specialization);
+        return;
+    }
+    Input("ime", doctorName, "doktora");
+    Input("prezime", doctorSurname, "doktora");
 
     DoctorPtr doctor = SearchDoctorByName(root, doctorName, doctorSurname);
     if(!doctor){
-        printf("Doktor nije pronadjen\n");
+        clearScreen();
+        printf("Doktor nije pronadjen\n\n");
         return;
     }
 
@@ -92,6 +97,7 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     }
 
     printf("\nUnesite ID pacijenta: ");
+    ListAllPatients(&ht);
     char patientID[10];
     getID(patientID);
     Patientptr patient = SearchPatientByID(&ht, patientID);
@@ -105,5 +111,6 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
 
     AddToCheckupHistory(patient, appointment, "Zakazan termin kod doktora");
 
-    printf("Termin %s je uspjesno rezerviran za pacijenta %s %s kod doktora %s %s.\n", appointment, patient->name, patient->surname, doctor->name, doctor->surname);
+    clearScreen();
+    printf("Termin %s je uspjesno rezerviran za pacijenta '%s %s' kod doktora '%s %s'.\n", appointment, patient->name, patient->surname, doctor->name, doctor->surname);
 }

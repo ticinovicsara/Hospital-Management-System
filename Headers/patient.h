@@ -1,12 +1,14 @@
 #ifndef PATIENT_H
 #define PATIENT_H
 
-#include <stdbool.h>
-
 #define MAX_NAME_LENGTH 50
 #define MAX_ILLNESS_LENGTH 50
 #define MAX_DATE_LENGTH 11
 #define MAX_DESCRIPTION_LENGTH 200
+
+#include <stdbool.h>
+
+typedef struct _specializationNode* SpecializationNodePtr;
 
 typedef struct MedicalRecord{
     char date[15];
@@ -48,6 +50,8 @@ Patientptr SearchPatientBySurname(HashTable* ht, const char* surname);
 
 bool DeletePatient(HashTable* ht, const char* id, const char* surname);
 void DeletePatientByIDSurname(HashTable* ht);
+
+void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root);
 
 void InsertPatient(HashTable* ht, Patientptr patient);
 void AddPatient(HashTable ht);

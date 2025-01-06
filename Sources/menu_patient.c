@@ -2,13 +2,13 @@
 #include <string.h>
 #include <stdlib.h>
 #include "../Headers/patient.h"
+#include "../Headers/doctor.h"
 #include "../Headers/help-functions.h"
 
-void addPatient(HashTable ht);
 void deletePatient(HashTable ht);
 void searchPatients(HashTable ht);
 
-void showPatientMenu(HashTable* hash_table){
+void showPatientMenu(HashTable* hash_table, SpecializationNodePtr root){
     while(1){
         printf("\n---- PACIJENTI ----\n\n");
         printf("1 - Dodaj pacijenta\n");
@@ -42,7 +42,7 @@ void showPatientMenu(HashTable* hash_table){
         switch (option) {
             case 1:
                 clearScreen();
-                addPatient(*hash_table);
+                AddPatient(*hash_table);
                 clearBuffer();
                 break;
             case 2:
@@ -57,7 +57,7 @@ void showPatientMenu(HashTable* hash_table){
                 break;
             case 4:
                 clearScreen();
-                //reserveAppointment();
+                ReserveAnAppointment(*hash_table, root);
                 clearBuffer();
                 break;
             case 5:
@@ -71,15 +71,11 @@ void showPatientMenu(HashTable* hash_table){
                 return;
             default:
                 clearScreen();
+                clearBuffer();
                 printf("Neispravan unos, pokusajte ponovo.\n\n");
                 break;
         }
     }
-}
-
-void addPatient(HashTable ht){
-    AddPatient(ht);
-    return;
 }
 
 void deletePatient(HashTable ht){
@@ -117,6 +113,7 @@ void searchPatients(HashTable ht){
         if (option == 1) {
             char id[10];
             getID(id);
+            getchar();
 
             Patientptr p = SearchPatientByID(&ht, id);
             if(!p){
@@ -130,7 +127,7 @@ void searchPatients(HashTable ht){
         else if (option == 2) {
             char surname[MAX_NAME_LENGTH];
 
-            InputSurname(surname, "pacijenta");
+            Input("prezime", surname, "pacijenta");
 
             Patientptr p = SearchPatientBySurname(&ht, surname);
             if(!p){
