@@ -2,7 +2,8 @@
     "files.associations": {
         "patient.h": "c",
         "read_files.h": "c",
-        "doctor.h": "c"
+        "doctor.h": "c",
+        "appointment.h": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }

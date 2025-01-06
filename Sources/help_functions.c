@@ -23,6 +23,17 @@ void clearBuffer(){
 }
 
 
+int max(int a, int b) {
+    return (a > b) ? a : b;
+}
+
+void PressAnyKey(){
+    printf("\nPristisnite bilo sto za nastavak...");
+    getchar();
+    clearScreen();
+}
+
+
 bool stringIsValid(char* string){
     for (int i = 0; string[i] != '\0'; i++) {
         if (isdigit(string[i])) {
@@ -143,9 +154,7 @@ void PatientDetails(Patientptr patient){
         }
     }
     printf("\n---------------------------------------------------------------\n");
-    printf("\nPristisnite bilo sto za nastavak...");
-    getchar();
-    getchar();
+    PressAnyKey();
     return;
 }
 
@@ -164,7 +173,6 @@ void ListAllPatients(HashTable* ht) {
             current = current->next;
         }
     }
-
     printf("\n\n");
 }
 
@@ -302,7 +310,7 @@ void ListAllEmergencyCases(PriorityQueue* pq){
 
     printf("Hitni slucajevi u redu:\n");
     for (int i = 0; i < pq->size; i++) {
-        printf("ID: %d, Opis: %s, Prioritet: %d\n", pq->queue[i].id, pq->queue[i].description, pq->queue[i].priority);
+        printf("ID: %s, Opis: %s, Prioritet: %d\n", pq->queue[i].id, pq->queue[i].description, pq->queue[i].priority);
     }
 }
 

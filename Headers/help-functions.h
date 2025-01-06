@@ -23,6 +23,8 @@ void ListAllEmergencyCases(PriorityQueue* pq);
 
 void clearScreen();
 void clearBuffer();
+void PressAnyKey();
+int max(int a, int b);
 
 bool stringIsValid(char* string);
 bool isLeapYear(int year);

@@ -78,8 +78,12 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 8,
+          "SelectedChildIndex": 9,
           "Children": [
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{aa2115a1-9712-457b-9047-dbb71ca2cdd2}"
+            },
             {
               "$type": "Document",
               "DocumentIndex": 2,
@@ -90,8 +94,7 @@
               "RelativeToolTip": "Sources\\read_files.c",
               "ViewState": "AgIAAAMAAAAAAAAAAAAAAA0AAAAMAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:26:42.944Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:26:42.944Z"
             },
             {
               "$type": "Document",
@@ -103,8 +106,7 @@
               "RelativeToolTip": "Sources\\patient.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAA9AAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:26:30.62Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:26:30.62Z"
             },
             {
               "$type": "Document",
@@ -116,8 +118,7 @@
               "RelativeToolTip": "Sources\\menu_doctor.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:26:19.391Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:26:19.391Z"
             },
             {
               "$type": "Document",
@@ -129,8 +130,7 @@
               "RelativeToolTip": "Sources\\help_functions.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAEAAAAAuAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:26:04.577Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:26:04.577Z"
             },
             {
               "$type": "Document",
@@ -142,8 +142,7 @@
               "RelativeToolTip": "Sources\\handle_patient.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAPAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:25:51.586Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:51.586Z"
             },
             {
               "$type": "Document",
@@ -155,8 +154,7 @@
               "RelativeToolTip": "Sources\\handle_emergency.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:25:38.872Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:38.872Z"
             },
             {
               "$type": "Document",
@@ -168,8 +166,7 @@
               "RelativeToolTip": "Sources\\doctor.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:25:21.83Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:21.83Z"
             },
             {
               "$type": "Document",
@@ -181,8 +178,7 @@
               "RelativeToolTip": "Headers\\read_files.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:20.375Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:20.375Z"
             },
             {
               "$type": "Document",
@@ -192,7 +188,7 @@
               "RelativeDocumentMoniker": "Sources\\main.c",
               "ToolTip": "C:\\Users\\ticin\\Radna povr\u0161ina\\Hospital-Management-System\\Sources\\main.c",
               "RelativeToolTip": "Sources\\main.c",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAATAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAwAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
               "WhenOpened": "2024-12-16T18:24:30.103Z",
               "EditorCaption": ""
@@ -207,8 +203,7 @@
               "RelativeToolTip": "Headers\\patient.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:18.905Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:18.905Z"
             },
             {
               "$type": "Document",
@@ -220,8 +215,7 @@
               "RelativeToolTip": "Headers\\menus.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:16.935Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:16.935Z"
             },
             {
               "$type": "Document",
@@ -233,8 +227,7 @@
               "RelativeToolTip": "Sources\\menu_patient.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAlAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:24:58.738Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:24:58.738Z"
             },
             {
               "$type": "Document",
@@ -246,8 +239,7 @@
               "RelativeToolTip": "Headers\\help-functions.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:14.704Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:14.704Z"
             },
             {
               "$type": "Document",
@@ -259,8 +251,7 @@
               "RelativeToolTip": "Headers\\emergency.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:12.356Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:12.356Z"
             },
             {
               "$type": "Document",
@@ -272,8 +263,7 @@
               "RelativeToolTip": "Headers\\doctor.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:11.055Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:11.055Z"
             },
             {
               "$type": "Document",
@@ -285,8 +275,7 @@
               "RelativeToolTip": "Headers\\appointment.h",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000680|",
-              "WhenOpened": "2024-12-16T18:25:09.499Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:25:09.499Z"
             },
             {
               "$type": "Document",
@@ -298,8 +287,7 @@
               "RelativeToolTip": "Sources\\emergency_case.c",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000423|",
-              "WhenOpened": "2024-12-16T18:24:25.275Z",
-              "EditorCaption": ""
+              "WhenOpened": "2024-12-16T18:24:25.275Z"
             }
           ]
         }

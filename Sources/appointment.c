@@ -1,6 +1,7 @@
-#include "../Headers/appointment.h"
-#include "../Headers/patient.h"
-#include "../Headers/doctor.h"
+#include "appointment.h"
+#include "patient.h"
+#include "doctor.h"
+#include "help-functions.h"
 #include <stdlib.h>
 #include <string.h>
 #include <stddef.h>
@@ -8,10 +9,6 @@
 int getHeight(AppointmentNodePtr node);
 int getBalance(AppointmentNodePtr node);
 AppointmentNodePtr rotate(AppointmentNodePtr root, int direction);
-
-int max(int a, int b) {
-    return (a > b) ? a : b;
-}
 
 bool isAppointmentAvailable(AppointmentNodePtr root, const char* date) {
     if (root == NULL) {
@@ -29,10 +26,10 @@ bool isAppointmentAvailable(AppointmentNodePtr root, const char* date) {
     }
 }
 
-AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, int patientID){
+AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, char* patientID){
     if (root == NULL) {
         AppointmentNodePtr newNode = malloc(sizeof(AppointmentNode));
-        newNode->appointment.id = patientID;
+        newNode->appointment.patientID = patientID;
         strcpy(newNode->appointment.date, date);
         newNode->left = newNode->right = NULL;
         newNode->height = 1;

@@ -3,15 +3,11 @@
 #include <string.h>
 #include "../Headers/patient.h"
 
-static int hash(const char* fname, const char* lname, int size){
+static int hash(const char* surname, int size){
     int hash_value = 0;
 
-    char full_name [MAX_NAME_LENGTH * 2 + 1] = "";
-    strcat(full_name, fname);
-    strcat(full_name, lname);
-
-    for(int i=0; full_name[i] != '\0'; i++){
-        hash_value = (hash_value * 31 + full_name[i]) % size;
+    for (int i = 0; surname[i] != '\0'; i++) {
+        hash_value = (hash_value * 31 + surname[i]) % size;
     }
     return hash_value;
 }
@@ -33,7 +29,7 @@ HashTable* CreateHashTable(int size){
 }
 
 void InsertPatient(HashTable* ht, Patientptr patient){
-    int index = hash(patient->name, patient->surname, ht->size);
+    int index = hash(patient->surname, ht->size);
     
     sprintf(patient->id, "%d", index);
 
@@ -49,7 +45,7 @@ void InsertPatient(HashTable* ht, Patientptr patient){
 }
 
 Patientptr SearchPatientBySurname(HashTable* ht, const char* surname){
-    int index = hash("", surname, ht->size);
+    int index = hash(surname, ht->size);
     NodePosition current = ht->buckets[index];
 
     while(current != NULL){
@@ -77,21 +73,14 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id){
 }
 
 bool DeletePatient(HashTable* ht, const char* id, const char* surname){
-    Patientptr patient = SearchPatientByID(ht, id);
-    if (patient == NULL) {
-        patient = SearchPatientBySurname(ht, surname);
-    }
-
-    if (patient == NULL) {
-        return false;
-    }
-
-    int index = hash(patient->id, patient->surname, ht->size);
+    int index = hash(surname, ht->size);
+    printf("hash: %d", index);
     NodePosition current = ht->buckets[index];
     NodePosition prev = NULL;
 
     while(current != NULL){
         if(strcmp(current->patient->id, id) == 0 && strcmp(current->patient->surname, surname) == 0){
+            printf("Found matching patient: %s %s\n", id, surname);
             if(prev == NULL){
                 ht->buckets[index] = current->next;
             }

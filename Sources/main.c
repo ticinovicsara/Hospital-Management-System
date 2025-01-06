@@ -31,7 +31,7 @@ int main(){
         printf("   ------------------------------------");
         printf("\n  <     HOSPITAL MANAGEMENT SYSTEM    >\n");
         printf("   ------------------------------------\n\n");
-        printf("Dobrodosli! Za nastavak odaberite radnju:\n");
+        printf("Dobrodosli! Za nastavak odaberite radnju:\n\n");
         printf("1 - Pacijenti\n");
         printf("2 - Doktori\n");
         printf("3 - Hitni slucajevi\n");
@@ -48,7 +48,7 @@ int main(){
 
         if (sscanf(input, "%d", &option) != 1) {
             clearScreen();
-            printf("Neispravan unos, unesite broj.\n");
+            printf("Neispravan unos, unesite broj.\n\n");
             continue;
         }
 

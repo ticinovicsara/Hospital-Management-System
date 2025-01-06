@@ -4,7 +4,7 @@
 #define MAX_QUEUE_SIZE 100
 
 typedef struct{
-    int id;
+    char id[10];
     char description[100];
     int priority;
 }EmergencyCase;

@@ -2,32 +2,36 @@
 #include <string.h>
 #include <stdlib.h>
 #include <stddef.h>
-#include "../Headers/doctor.h"
+#include "doctor.h"
+#include "help-functions.h"
 
-SpecializationNodePtr rotate(SpecializationNodePtr root, int direction);
-SpecializationNodePtr rightRotation(SpecializationNodePtr root);
-SpecializationNodePtr leftRotation(SpecializationNodePtr root);
-int max(int a, int b);
-int getHeight(SpecializationNodePtr node);
-int getBalance(SpecializationNodePtr node);
+static SpecializationNodePtr rotate(SpecializationNodePtr root, int direction);
+static SpecializationNodePtr rightRotation(SpecializationNodePtr root);
+static SpecializationNodePtr leftRotation(SpecializationNodePtr root);
+static int getHeight(SpecializationNodePtr node);
+static int getBalance(SpecializationNodePtr node);
+void printTree(SpecializationNodePtr root);
 
 SpecializationNodePtr BalanceTree(SpecializationNodePtr root){
-    root->height = 1 + max(getHeight(root->left), getHeight(root->right));
+    if (!root) {
+        return NULL;
+    }
 
+    root->height = 1 + max(getHeight(root->left), getHeight(root->right));
     int balance = getBalance(root);
 
     if (balance > 1) {
         if (getBalance(root->left) < 0) {
-            root->left = rotate(root->left, 1);
+            root->left = leftRotation(root);
         }
-        return rotate(root, 0);
+        return rightRotation(root);
     }
 
     if (balance < -1) {
         if (getBalance(root->right) > 0) {
-            root->right = rotate(root->right, 0);
+            root->right = rightRotation(root->right);
         }
-        return rotate(root, 1);
+        return leftRotation(root);
     }
 
     return root;
@@ -86,10 +90,9 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
         newDoctor->availableAppointments = available_appointments;
         newDoctor->next = root->doctors;
         root->doctors = newDoctor;
-        return root;
     }
-    
     root = BalanceTree(root);
+
     return root;
 }
 
@@ -163,30 +166,25 @@ SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name,
     return root;
 }
 
-
-
-int max(int a, int b) {
-    return (a > b) ? a : b;
-}
-
-int getHeight(SpecializationNodePtr node) {
+static int getHeight(SpecializationNodePtr node) {
     if (!node) return 0;
     return node->height;
 }
 
-int getBalance(SpecializationNodePtr node) {
+static int getBalance(SpecializationNodePtr node) {
     if (!node) return 0;
     return getHeight(node->left) - getHeight(node->right);
 }
 
-SpecializationNodePtr rotate(SpecializationNodePtr root, int direction) {
+static SpecializationNodePtr rotate(SpecializationNodePtr root, int direction) {
     SpecializationNodePtr newRoot;
 
     if (direction == 0) {
         newRoot = root->left;
         root->left = newRoot->right;
         newRoot->right = root;
-    } else {
+    }
+    else {
         newRoot = root->right;
         root->right = newRoot->left;
         newRoot->left = root;
@@ -199,11 +197,10 @@ SpecializationNodePtr rotate(SpecializationNodePtr root, int direction) {
 }
 
 
-SpecializationNodePtr rightRotation(SpecializationNodePtr root) {
+static SpecializationNodePtr rightRotation(SpecializationNodePtr root) {
     return rotate(root, 0);
 }
 
-SpecializationNodePtr leftRotation(SpecializationNodePtr root) {
+static SpecializationNodePtr leftRotation(SpecializationNodePtr root) {
     return rotate(root, 1);
 }
-

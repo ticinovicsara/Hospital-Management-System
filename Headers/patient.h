@@ -8,15 +8,15 @@
 #define MAX_DATE_LENGTH 11
 #define MAX_DESCRIPTION_LENGTH 200
 
-typedef struct _medicalRecord* RecordPtr;
-typedef struct _medicalRecord{
+typedef struct MedicalRecord{
     char date[15];
     char ilness[MAX_NAME_LENGTH];
     char description[200];
-    RecordPtr next;
+    struct MedicalRecord* next;
 }MedicalRecord;
 
-typedef struct _patient* Patientptr;
+typedef MedicalRecord* RecordPtr;
+
 typedef struct _patient{
     char id[10];
     char name[MAX_NAME_LENGTH];
@@ -26,11 +26,14 @@ typedef struct _patient{
     RecordPtr checkups;
 }Patient;
 
-typedef struct _node* NodePosition;
-typedef struct _node{
+typedef Patient* Patientptr;
+
+typedef struct Node{
     Patientptr patient;
-    NodePosition next;
+    struct Node* next;
 }Node;
+
+typedef Node* NodePosition;
 
 typedef struct HashTable{
     int size;
@@ -44,7 +47,7 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id);
 Patientptr SearchPatientBySurname(HashTable* ht, const char* surname);
 
 bool DeletePatient(HashTable* ht, const char* id, const char* surname);
-void DeletePatientByIDSurname(HashTable* ht)
+void DeletePatientByIDSurname(HashTable* ht);
 
 void InsertPatient(HashTable* ht, Patientptr patient);
 void AddPatient(HashTable ht);

@@ -121,14 +121,13 @@ void searchPatients(HashTable ht){
             Patientptr p = SearchPatientByID(&ht, id);
             if(!p){
                 clearScreen();
-                printf("\nPacijent s navedenim ID-om nije nadjen\n", p->id);
+                printf("\nPacijent s ID: '%s' nije nadjen\n", p->id);
                 break;
             }
             PatientDetails(p);
             break;
         }
         else if (option == 2) {
-            char name[MAX_NAME_LENGTH];
             char surname[MAX_NAME_LENGTH];
 
             InputSurname(surname, "pacijenta");
@@ -136,7 +135,7 @@ void searchPatients(HashTable ht){
             Patientptr p = SearchPatientBySurname(&ht, surname);
             if(!p){
                 clearScreen();
-                printf("Pacijent s navedenim imenom nije nadjen\n\n", p->id);
+                printf("Pacijent s imenom '%s' nije nadjen\n\n", p->name);
                 break;
             }
 

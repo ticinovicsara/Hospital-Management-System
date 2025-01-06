@@ -27,6 +27,7 @@ void ReadPatients(HashTable* ht){
         }
 
         newPatient->ilnesses = NULL; 
+        newPatient->checkups = NULL;
 
         if (sscanf(buffer, "%49[^,],%49[^,],%14[^,]", newPatient->name, newPatient->surname, newPatient->birthDate) != 3) {
             printf("Greska pri parsiranju podataka pacijenta\n");
@@ -35,6 +36,7 @@ void ReadPatients(HashTable* ht){
         }
 
         char* records_start = buffer + strlen(newPatient->name) + strlen(newPatient->surname) + strlen(newPatient->birthDate) + 3;
+
         char* record_token = strtok(records_start, ";");
 
          while (record_token != NULL) {
@@ -107,7 +109,7 @@ void ReadEmergencyCases(PriorityQueue* pq){
 
     char buffer[BUFFER_SIZE];
     while (fgets(buffer, BUFFER_SIZE, fp)) {
-        if (sscanf(buffer, "%d,%99[^,],%d", &newCase->id, newCase->description, &newCase->priority) == 3) {
+        if (sscanf(buffer, "%10[^,],%99[^,],%d", newCase->id, newCase->description, &newCase->priority) == 3) {
             enqueue(pq, *newCase);
         }
         else{
@@ -117,5 +119,6 @@ void ReadEmergencyCases(PriorityQueue* pq){
         }
     }
 
-    fclose(fp); 
+    fclose(fp);
+    free(newCase);
 }

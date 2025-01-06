@@ -4,24 +4,22 @@
 #include "patient.h"
 
 typedef struct{
-    int id;
-    int patientID;
+    char* patientID;
     char date[MAX_DATE_LENGTH];
     char reason[100];
 }Appointment;
 
-
-typedef struct AppointmentNode* AppointmentNodePtr; 
 typedef struct AppointmentNode {
     Appointment appointment;
-    AppointmentNode* left;
-    AppointmentNode* right;
+    struct AppointmentNode* left;
+    struct AppointmentNode* right;
     int height;
 } AppointmentNode;
 
+typedef AppointmentNode* AppointmentNodePtr;
 
 AppointmentNodePtr BalanceAppointmentTree(AppointmentNodePtr root);
 bool isAppointmentAvailable(AppointmentNodePtr root, const char* date);
-AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, int patientID);
+AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, char* patientID);
 
 #endif
