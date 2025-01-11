@@ -30,6 +30,8 @@ void PressAnyKey();
 int max(int a, int b);
 
 bool stringIsValid(char* string);
+void capitalizeName(char *str);
+
 bool isLeapYear(int year);
 bool isValidDate(const char* date);
 void getDate(char* date);

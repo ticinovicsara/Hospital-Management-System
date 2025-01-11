@@ -20,8 +20,13 @@ void AddDoctor(SpecializationNodePtr* root){
 
     Input("ime", name, "doktora");
     Input("prezime", surname, "doktora");
+
+    capitalizeName(name);
+    capitalizeName(surname);
+
     strcpy(newDoctor->name, name);
     strcpy(newDoctor->surname, surname);
+
     PrintSpecializations(*root);
     Input("specijalizaciju", specialization, "doktora");
 
@@ -45,6 +50,9 @@ void DeleteDoctorByNameSurname(SpecializationNodePtr root){
 
     Input("ime", name, "doktora");
     Input("prezime", surname, "doktora");
+
+    capitalizeName(name);
+    capitalizeName(surname);
 
     SpecializationNodePtr updatedRoot = DeleteDoctor(root, name, surname);
 

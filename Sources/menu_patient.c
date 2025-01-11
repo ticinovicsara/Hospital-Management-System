@@ -119,10 +119,12 @@ void searchPatients(HashTable ht){
 
             Input("prezime", surname, "pacijenta");
 
+            capitalizeName(surname);
+
             Patientptr p = SearchPatientBySurname(&ht, surname);
-            if(!p){
+            if(p == NULL){
                 clearScreen();
-                printf("Pacijent s imenom '%s' nije nadjen\n\n", p->name);
+                printf("Pacijent s prezimenom '%s' nije nadjen\n\n", p->surname);
                 continue;
             }
 

@@ -43,6 +43,15 @@ bool stringIsValid(char* string){
     return true;
 }
 
+void capitalizeName(char *str){
+    if (str[0] != '\0') {
+        str[0] = toupper(str[0]);
+        for (int i = 1; str[i] != '\0'; i++) {
+            str[i] = tolower(str[i]);
+        }
+    }
+}
+
 
 bool isLeapYear(int year) {
     return (year % 4 == 0 && year % 100 != 0) || (year % 400 == 0);

@@ -45,7 +45,7 @@ void showDoctorMenu(SpecializationNodePtr root){
                 return;
 
             default:
-                printf("Neispravan unos, unesite ponovno\n");
+                printf("Neispravan unos, unesite ponovno\n\n");
                 break;
 
         }
@@ -81,6 +81,9 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 Input("ime", name, "doktora");
                 Input("prezime", surname, "doktora");
 
+                capitalizeName(name);
+                capitalizeName(surname);
+
                 DoctorPtr doctor = SearchDoctorByName(root, name, surname);
                 if(!doctor){
                     clearScreen();
@@ -112,6 +115,8 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 PrintSpecializations(root);
                 char specialization[MAX_NAME_LENGTH];
                 Input("specijalizaciju", specialization, "doktora");
+
+                capitalizeName(specialization);
 
                 bool found = true;
                 if(found){

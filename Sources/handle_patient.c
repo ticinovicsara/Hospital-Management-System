@@ -20,6 +20,10 @@ void AddPatient(HashTable ht){
 
     Input("ime", name, "pacijenta");
     Input("prezime", surname, "pacijenta");
+
+    capitalizeName(name);
+    capitalizeName(surname);
+
     strcpy(newPatient->name, name);
     strcpy(newPatient->surname, surname);
 
@@ -33,6 +37,7 @@ void AddPatient(HashTable ht){
     InsertPatient(&ht, newPatient);
 
     clearScreen();
+    getchar();
     printf("Pacijent uspjesno kreiran\n\n");
     return;
 }
@@ -47,6 +52,7 @@ void DeletePatientByIDSurname(HashTable* ht) {
     getID(id);
     
     Input("prezime", surname, "pacijenta");
+    capitalizeName(surname);
 
     if(!DeletePatient(ht, id, surname)){
         clearScreen();
@@ -79,6 +85,9 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     }
     Input("ime", doctorName, "doktora");
     Input("prezime", doctorSurname, "doktora");
+
+    capitalizeName(doctorName);
+    capitalizeName(doctorSurname);
 
     DoctorPtr doctor = SearchDoctorByName(root, doctorName, doctorSurname);
     if(!doctor){
