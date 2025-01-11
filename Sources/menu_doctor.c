@@ -93,12 +93,23 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 printf("     --------------------------------------------------------------------------\n");
                 printf("\t%-23s %-11s %-15s %-5d\n\n\n", root->specialization, doctor->name, doctor->surname, doctor->availableAppointments);
 
+                printf("\n     --------------------------------------------------------------------------\n");
+                printf("\tPACIJENTI\t\tTERMIN PREGLEDA\n");
+                printf("     --------------------------------------------------------------------------\n");
+                
+                NodePosition temp = doctor->patients;
+                while(temp != NULL){
+                    printf("\t%s %s\t\t%s\n", temp->patient->name, temp->patient->surname, temp->patient->checkups->date);
+                    temp = temp->next;
+                }
+
                 PressAnyKey();
                 clearScreen();
                 break;
 
             case 2:
                 clearScreen();
+                PrintSpecializations(root);
                 char specialization[MAX_NAME_LENGTH];
                 Input("specijalizaciju", specialization, "doktora");
 

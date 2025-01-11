@@ -8,6 +8,8 @@
 
 #include <stdbool.h>
 
+typedef struct _doctor* DoctorPtr;
+
 typedef struct _specializationNode* SpecializationNodePtr;
 
 typedef struct MedicalRecord{
@@ -57,5 +59,6 @@ void InsertPatient(HashTable* ht, Patientptr patient);
 void AddPatient(HashTable ht);
 void AddToIllnessHistory(Patientptr patient, const char* date, const char* illness, const char* description);
 void AddToCheckupHistory(Patientptr patient, const char* date, const char* description);
+void AddPatientToDoctor(DoctorPtr doctor, Patientptr patient);
 
 #endif

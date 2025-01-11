@@ -4,12 +4,15 @@
 #include "patient.h"
 #include "appointment.h"
 
+typedef struct Node* NodePosition;
+
 typedef struct _doctor{
     char name[MAX_NAME_LENGTH];
     char surname[MAX_NAME_LENGTH];
     AppointmentNodePtr appointments;
     int availableAppointments;
     struct _doctor* next;
+    NodePosition patients;
 }Doctor;
 
 typedef Doctor* DoctorPtr;

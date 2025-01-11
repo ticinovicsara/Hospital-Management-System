@@ -28,6 +28,7 @@ void AddDoctor(SpecializationNodePtr* root){
     newDoctor->availableAppointments = 10;
     newDoctor->appointments = NULL;
     newDoctor->next = NULL;
+    newDoctor->patients = NULL;
 
     *root = InsertDoctor(*root, specialization, name, surname, 10);
 

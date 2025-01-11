@@ -109,6 +109,8 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     doctor->appointments = InsertAppointment(doctor->appointments, appointment, patient->id);
     doctor->availableAppointments--;
 
+    AddPatientToDoctor(doctor, patient);
+    
     AddToCheckupHistory(patient, appointment, "Zakazan termin kod doktora");
 
     clearScreen();

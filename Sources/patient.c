@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include "../Headers/patient.h"
+#include "../Headers/doctor.h"
 #include "../Headers/help-functions.h"
 
 static int hash(const char* surname, int size){
@@ -44,6 +45,28 @@ void InsertPatient(HashTable* ht, Patientptr patient){
     newNode->next = ht->buckets[index];
     ht->buckets[index] = newNode;
 }
+
+void AddPatientToDoctor(DoctorPtr doctor, Patientptr patient){
+    NodePosition current = doctor->patients;
+    
+    while (current != NULL) {
+        if (strcmp(current->patient->id, patient->id) == 0) {
+            return;
+        }
+        current = current->next;
+    }
+
+    NodePosition newNode = (NodePosition)malloc(sizeof(Node));
+    if (!newNode){
+        printf("Greska pri alokaciji memorije za novog pacijenta doktoru.\n");
+        return;
+    }
+
+    newNode->patient = patient;
+    newNode->next = doctor->patients;
+    doctor->patients = newNode;
+}
+
 
 Patientptr SearchPatientBySurname(HashTable* ht, const char* surname){
     int index = hash(surname, ht->size);

@@ -4,7 +4,8 @@
         "read_files.h": "c",
         "doctor.h": "c",
         "appointment.h": "c",
-        "stdio.h": "c"
+        "stdio.h": "c",
+        "xutility": "c"
     },
     "C_Cpp.errorSquiggles": "disabled"
 }
