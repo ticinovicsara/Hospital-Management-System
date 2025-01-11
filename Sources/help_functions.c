@@ -13,9 +13,7 @@
 static void ListAllSpecializations(SpecializationNodePtr root);
 
 void clearScreen(){
-    for (int i = 0; i < 50; i++) {
-        printf("\n");
-    }
+    system("clear");
 }
 
 void clearBuffer(){

@@ -120,7 +120,6 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id){
 
 bool DeletePatient(HashTable* ht, const char* id, const char* surname){
     int index = hash(surname, ht->size);
-    printf("hash: %d", index);
     NodePosition current = ht->buckets[index];
     NodePosition prev = NULL;
 

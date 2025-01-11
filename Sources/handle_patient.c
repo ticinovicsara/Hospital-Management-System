@@ -54,13 +54,13 @@ void DeletePatientByIDSurname(HashTable* ht) {
         return;
     }
     clearScreen();
-    printf("\nPacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
+    printf("Pacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
     printf("\n");
 }
 
 
 void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
-    printf("--- Rezerviranje termina kod doktora ---\n");
+    printf("--- Rezerviranje termina kod doktora ---");
 
     char specialization[MAX_NAME_LENGTH];
     char doctorName[MAX_NAME_LENGTH];

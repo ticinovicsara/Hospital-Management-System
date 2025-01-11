@@ -60,6 +60,8 @@ void showPatientMenu(HashTable* hash_table, SpecializationNodePtr root){
             case 5:
                 clearScreen();
                 ListAllPatients(hash_table);
+                PressAnyKey();
+                clearScreen();
                 break;
             case 0:
                 clearScreen();
