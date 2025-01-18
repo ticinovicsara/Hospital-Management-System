@@ -17,13 +17,11 @@ static int hash(const char* surname, int size){
 HashTable* CreateHashTable(int size){
     HashTable* ht = (HashTable*)malloc(sizeof(HashTable));
     if(!ht){
-        printf("Nemoguce alocirati tablicu\n");
         return NULL;
     }
     ht->size = size;
     ht->buckets = (NodePosition*)calloc(size, sizeof(NodePosition));
     if(ht->buckets == NULL){
-        printf("greska pri alokaciji bucketa\n");
         free(ht);
         return NULL;
     }
@@ -37,7 +35,6 @@ void InsertPatient(HashTable* ht, Patientptr patient){
 
     NodePosition newNode = (NodePosition)malloc(sizeof(Node));
     if(!newNode){
-        printf("greska pri alokaciji pacijenta\n");
         return;
     }
 
@@ -58,7 +55,6 @@ void AddPatientToDoctor(DoctorPtr doctor, Patientptr patient){
 
     NodePosition newNode = (NodePosition)malloc(sizeof(Node));
     if (!newNode){
-        printf("Greska pri alokaciji memorije za novog pacijenta doktoru.\n");
         return;
     }
 
@@ -103,10 +99,11 @@ Patientptr SearchPatientByID(HashTable* ht, const char* id){
         return candidates[0];
     }
 
-    if (foundCount > 2) {
+    if (foundCount > 1) {
         printf("\nVise pacijenata sa istim ID-om pronadjeno.\n");
         char surname[MAX_NAME_LENGTH];
         Input("prezime", surname, "pacijenta");
+        capitalizeName(surname);
 
         for (int i = 0; i < candidateCount; i++) {
             if (strcmp(candidates[i]->surname, surname) == 0) {
@@ -125,7 +122,6 @@ bool DeletePatient(HashTable* ht, const char* id, const char* surname){
 
     while(current != NULL){
         if(strcmp(current->patient->id, id) == 0 && strcmp(current->patient->surname, surname) == 0){
-            printf("Found matching patient: %s %s\n", id, surname);
             if(prev == NULL){
                 ht->buckets[index] = current->next;
             }

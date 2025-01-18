@@ -63,6 +63,7 @@ SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specializat
         newDoctor->availableAppointments = available_appointments;
         newDoctor->next = NULL;
 
+        newDoctor->next = node->doctors;
         node->doctors = newDoctor;
         return node;
     }

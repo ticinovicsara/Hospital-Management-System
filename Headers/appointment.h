@@ -20,6 +20,6 @@ typedef AppointmentNode* AppointmentNodePtr;
 
 AppointmentNodePtr BalanceAppointmentTree(AppointmentNodePtr root);
 bool isAppointmentAvailable(AppointmentNodePtr root, const char* date);
-AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, char* patientID);
+AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, char* patientID, char* reason);
 
 #endif

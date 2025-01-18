@@ -29,6 +29,7 @@ void AddDoctor(SpecializationNodePtr* root){
 
     PrintSpecializations(*root);
     Input("specijalizaciju", specialization, "doktora");
+    capitalizeName(specialization);
 
     newDoctor->availableAppointments = 10;
     newDoctor->appointments = NULL;
@@ -43,7 +44,7 @@ void AddDoctor(SpecializationNodePtr* root){
 
 void DeleteDoctorByNameSurname(SpecializationNodePtr root){
     printf("\nBrisanje doktora: \n");
-    ListAllDoctors(root);
+    PrintDoctors(root);
 
     char name[MAX_NAME_LENGTH];
     char surname[MAX_NAME_LENGTH];
@@ -54,13 +55,16 @@ void DeleteDoctorByNameSurname(SpecializationNodePtr root){
     capitalizeName(name);
     capitalizeName(surname);
 
+    if(!SearchDoctorByName(root, name, surname)){
+        clearScreen();
+        printf("\nDoktor '%s %s' nije pronadjen.\n", name, surname);
+        return;
+    }
+
     SpecializationNodePtr updatedRoot = DeleteDoctor(root, name, surname);
 
     if (updatedRoot) {
         clearScreen();
         printf("\nDoktor '%s %s' je uspjesno obrisan.\n", name, surname);
-    } else {
-        clearScreen();
-        printf("\nDoktor '%s %s' nije pronadjen.\n", name, surname);
     }
 }

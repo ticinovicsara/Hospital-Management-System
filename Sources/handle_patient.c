@@ -60,7 +60,7 @@ void DeletePatientByIDSurname(HashTable* ht) {
         return;
     }
     clearScreen();
-    printf("Pacijent sa ID %s i prezimenom %s je obrisan.\n", id, surname);
+    printf("Pacijent sa ID '%s' i prezimenom '%s' je obrisan.\n", id, surname);
     printf("\n");
 }
 
@@ -77,6 +77,7 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     printf("\n\nUnesite specijalizaciju: ");
     fgets(specialization, MAX_NAME_LENGTH, stdin);
     specialization[strcspn(specialization, "\n")] = '\0';
+    capitalizeName(specialization);
 
     if(!ListDoctorsBySpecialization(root, specialization)){
         clearScreen();
@@ -92,6 +93,7 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     DoctorPtr doctor = SearchDoctorByName(root, doctorName, doctorSurname);
     if(!doctor){
         clearScreen();
+        getchar();
         printf("Doktor nije pronadjen\n\n");
         return;
     }
@@ -110,19 +112,22 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     char patientID[10];
     getID(patientID);
     Patientptr patient = SearchPatientByID(&ht, patientID);
+    getchar();
     if (!patient) {
         printf("Pacijent nije pronadjen.\n");
         return;
     }
 
-    doctor->appointments = InsertAppointment(doctor->appointments, appointment, patient->id);
+    char reason[50];
+    InputReason("razlog", reason, "termina");
+
+    doctor->appointments = InsertAppointment(doctor->appointments, appointment, patient->id, reason);
     doctor->availableAppointments--;
 
     AddPatientToDoctor(doctor, patient);
     
-    AddToCheckupHistory(patient, appointment, "Zakazan termin kod doktora");
+    AddToCheckupHistory(patient, appointment, reason);
 
     clearScreen();
     printf("Termin %s je uspjesno rezerviran za pacijenta '%s %s' kod doktora '%s %s'.\n", appointment, patient->name, patient->surname, doctor->name, doctor->surname);
-    getchar();
 }

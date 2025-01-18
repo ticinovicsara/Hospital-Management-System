@@ -10,10 +10,16 @@
 #include "../Headers/help-functions.h"
 #include "../Headers/emergency.h"
 
+#define MAX_BUFFER_SIZE 1024
+
 static void ListAllSpecializations(SpecializationNodePtr root);
+static void ListAllDoctors(SpecializationNodePtr root);
 
 void clearScreen(){
-    system("clear");
+    for(int i=0; i<10; i++){
+        printf("\n");
+    }
+    //system("clear");
 }
 
 void clearBuffer(){
@@ -195,17 +201,15 @@ void PrintDoctors(SpecializationNodePtr root) {
 
     ListAllDoctors(root);
     printf("\n\n");
-    PressAnyKey();
-    clearScreen();
 }
 
-void ListAllDoctors(SpecializationNodePtr root){
+static void ListAllDoctors(SpecializationNodePtr root){
     if(root == NULL){
         return;
     }
     DoctorPtr currDoctor = root->doctors;
     if (currDoctor == NULL) {
-        printf("\tNema doktora u ovoj specijalizaciji.\n");
+        printf("\t%-23s\tNema doktora u ovoj specijalizaciji.\n", root->specialization);
     }
     else {
         while (currDoctor != NULL) {
@@ -227,6 +231,19 @@ void Input(char* message, char* input, char* role){
             printf("Neispravan unos, pokusajte ponovo.\n");
         }
     } while (!stringIsValid(input));
+}
+
+void InputReason(char* message, char* input, char* role){
+    do {
+        printf("\nUnesite %s %s: ", message, role);
+        fgets(input, MAX_BUFFER_SIZE, stdin);
+
+        input[strcspn(input, "\n")] = '\0';
+
+        if (strlen(input) == 0) {
+            printf("Unos ne moze biti prazan, pokusajte ponovo.\n");
+        }
+    } while (strlen(input) == 0);
 }
 
 void InputNumberBetween(char* message, int* priority, int min, int max) {
@@ -255,7 +272,7 @@ void getNumberInput(char* input) {
     int validInput = 0;
 
     do {
-        printf("Unesite broj: ");
+        printf("Unesite ID: ");
         fgets(input, 10, stdin);
 
         input[strcspn(input, "\n")] = '\0';
@@ -322,7 +339,7 @@ bool ListDoctorsBySpecialization(SpecializationNodePtr root, const char* special
 }
 
 void ListAvailableAppointments(DoctorPtr doctor){
-    printf("Dostupni termini doktora: %s %s\n\n", doctor->name, doctor->surname);
+    printf("\n\nDostupni termini doktora: %s %s\n\n", doctor->name, doctor->surname);
 
     if (doctor == NULL) {
         printf("Nema informacija o doktoru\n");
@@ -340,9 +357,9 @@ void ListAvailableAppointments(DoctorPtr doctor){
     int freeAppointments = doctor->availableAppointments - scheduledCount;
 
     if (freeAppointments > 0) {
-        printf("\nBroj slobodnih termina: %d\n", freeAppointments);
+        printf("\n\tBroj slobodnih termina: %d\n", freeAppointments);
     } else {
-        printf("\nNema slobodnih termina.\n");
+        printf("\n\tNema slobodnih termina.\n");
     }
 }
 

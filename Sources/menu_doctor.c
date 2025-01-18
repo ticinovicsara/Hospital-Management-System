@@ -32,11 +32,14 @@ void showDoctorMenu(SpecializationNodePtr root){
             case 3:
                 clearScreen();
                 SearchDoctorBy(root);
+                getchar();
                 break;
 
             case 4:
                 clearScreen();
                 PrintDoctors(root);
+                PressAnyKey();
+                clearScreen();
                 break;
 
             case 0:
@@ -53,6 +56,7 @@ void showDoctorMenu(SpecializationNodePtr root){
 }
 
 static void SearchDoctorBy(SpecializationNodePtr root){
+    getchar();
     while(1){
         printf("Trazenje doktora prema: \n");
         printf("1 - Imenu i prezimenu\n");
@@ -87,22 +91,22 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 DoctorPtr doctor = SearchDoctorByName(root, name, surname);
                 if(!doctor){
                     clearScreen();
-                    printf("Doktor '%s %s'nije prodnadjen\n", name, surname);
+                    printf("Doktor '%s %s' nije pronadjen\n", name, surname);
                     return;
                 }
 
-                printf("     --------------------------------------------------------------------------\n");
+                printf("\n\n     --------------------------------------------------------------------------\n");
                 printf("\tSPECIJALIZACIJA\t\tIME\t    PREZIME\t    DOSTUPNI TERMINI\n");
                 printf("     --------------------------------------------------------------------------\n");
                 printf("\t%-23s %-11s %-15s %-5d\n\n\n", root->specialization, doctor->name, doctor->surname, doctor->availableAppointments);
 
                 printf("\n     --------------------------------------------------------------------------\n");
-                printf("\tPACIJENTI\t\tTERMIN PREGLEDA\n");
+                printf("\tPACIJENTI\t\tTERMIN PREGLEDA\t\tRAZLOG\n");
                 printf("     --------------------------------------------------------------------------\n");
                 
                 NodePosition temp = doctor->patients;
                 while(temp != NULL){
-                    printf("\t%s %s\t\t%s\n", temp->patient->name, temp->patient->surname, temp->patient->checkups->date);
+                    printf("\t%s %s\t\t%s\t\t%s\n\n", temp->patient->name, temp->patient->surname, temp->patient->checkups->date, temp->patient->checkups->description);
                     temp = temp->next;
                 }
 
@@ -129,7 +133,6 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 break;
             
             case 0:
-                clearBuffer();
                 clearScreen();
                 return;
 

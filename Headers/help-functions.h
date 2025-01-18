@@ -16,7 +16,6 @@ void PrintIllnessHistory(Patientptr patient);
 void PrintCheckupHistory(Patientptr patient);
 
 void PrintDoctors(SpecializationNodePtr root);
-void ListAllDoctors(SpecializationNodePtr root);
 void PrintSpecializations(SpecializationNodePtr root);
 bool ListDoctorsBySpecialization(SpecializationNodePtr root, const char* specialization);
 void ListAvailableAppointments(DoctorPtr doctor);
@@ -40,6 +39,7 @@ void getID(char* id);
 void getNumberInput(char* input);
 
 void Input(char* message, char* input, char* role);
+void InputReason(char* message, char* input, char* role);
 void InputNumberBetween(char* message, int* priority, int min, int max);
 
 #endif

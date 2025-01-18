@@ -26,21 +26,22 @@ bool isAppointmentAvailable(AppointmentNodePtr root, const char* date) {
     }
 }
 
-AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, char* patientID){
+AppointmentNodePtr InsertAppointment(AppointmentNodePtr root, const char* date, char* patientID, char* reason){
     if (root == NULL) {
         AppointmentNodePtr newNode = malloc(sizeof(AppointmentNode));
         newNode->appointment.patientID = patientID;
         strcpy(newNode->appointment.date, date);
+        strcpy(newNode->appointment.reason, reason);
         newNode->left = newNode->right = NULL;
         newNode->height = 1;
         return newNode;
     }
     int cmp = strcmp(date, root->appointment.date);
     if (cmp < 0) {
-        root->left = InsertAppointment(root->left, date, patientID);
+        root->left = InsertAppointment(root->left, date, patientID, reason);
     }
     else if (cmp > 0) {
-        root->right = InsertAppointment(root->right, date, patientID);
+        root->right = InsertAppointment(root->right, date, patientID, reason);
     }
     else{
         return root;
