@@ -35,7 +35,7 @@ int main(){
         printf("1 - Pacijenti\n");
         printf("2 - Doktori\n");
         printf("3 - Hitni slucajevi\n");
-        printf("0 - Izlaz\n");
+        printf("\n0 - Izlaz\n");
         printf("\n: ");
         
         if (!fgets(input, sizeof(input), stdin)) {

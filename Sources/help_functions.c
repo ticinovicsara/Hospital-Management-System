@@ -430,4 +430,3 @@ void PrintCheckupHistory(Patientptr patient) {
         }
     }
 }
-

@@ -46,7 +46,7 @@ void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht){
                     printf("   ---------------------------------------------------------------\n");
                     printf("     Prioritet      ID pacijenta           Opis\n");
                     printf("   ---------------------------------------------------------------\n");
-                    printf("        %d              %s              %s\n", topCase.priority, topCase.patientId, topCase.description);
+                    printf("        %-17d%-18s%s\n", topCase.priority, topCase.patientId, topCase.description);
                     printf("   ---------------------------------------------------------------\n");
                 }
 

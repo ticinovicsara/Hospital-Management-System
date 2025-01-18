@@ -116,6 +116,7 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     Patientptr patient = SearchPatientByID(&ht, patientID);
     getchar();
     if (!patient) {
+        clearScreen();
         printf("Pacijent nije pronadjen.\n");
         return;
     }
