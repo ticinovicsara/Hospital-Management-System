@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "../Headers/doctor.h"
 #include "../Headers/menus.h"
 #include "../Headers/help-functions.h"
@@ -106,7 +107,7 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 
                 NodePosition temp = doctor->patients;
                 while(temp != NULL){
-                    printf("\t%s %s\t\t%s\t\t%s\n\n", temp->patient->name, temp->patient->surname, temp->patient->checkups->date, temp->patient->checkups->description);
+                    printf("\t%s %-15s\t%-20s\t%-30s\n", temp->patient->name, temp->patient->surname, temp->patient->checkups->date, temp->patient->checkups->description);
                     temp = temp->next;
                 }
 

@@ -101,8 +101,10 @@ void ReserveAnAppointment(HashTable ht, SpecializationNodePtr root){
     printf("\n\nOdaberite termin: ");
     ListAvailableAppointments(doctor);
     getDate(appointment);
+    getchar();
 
     if (!isAppointmentAvailable(doctor->appointments, appointment)) {
+        clearScreen();
         printf("Termin %s nije dostupan, pokusajte ponovo.\n", appointment);
         return;
     }

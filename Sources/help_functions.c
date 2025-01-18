@@ -16,10 +16,7 @@ static void ListAllSpecializations(SpecializationNodePtr root);
 static void ListAllDoctors(SpecializationNodePtr root);
 
 void clearScreen(){
-    for(int i=0; i<10; i++){
-        printf("\n");
-    }
-    //system("clear");
+    system("clear");
 }
 
 void clearBuffer(){
@@ -393,14 +390,14 @@ void ListAllEmergencyCases(PriorityQueue* pq){
 
     printf("\nHitni slucajevi u redu:\n");
     printf("     -----------------------------------------------------------------\n");
-    printf("     \tPRIORITET\tID PACIJENTA\t\tOPIS\n");
+    printf("     \tPRIORITET\t  ID PACIJENTA\t\tOPIS\n");
     printf("     -----------------------------------------------------------------\n");
 
     for (int i = 0; i < pq->size; i++) {
-        printf("\t%-10d\t%-15s\t\t%-20s\n", 
-               pq->queue[i].priority, 
-               pq->queue[i].patientId, 
-               pq->queue[i].description);
+        printf("\t    %-12d\t%-10s\t%-20s\n", 
+           pq->queue[i].priority,
+           pq->queue[i].patientId, 
+           pq->queue[i].description);
     }
 
     printf("     -----------------------------------------------------------------\n\n");

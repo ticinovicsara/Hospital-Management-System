@@ -13,7 +13,7 @@ void initializeQueue(PriorityQueue* pq) {
 static void upheap(PriorityQueue* pq, int index) {
     while (index > 0) {
         int parent = (index - 1) / 2;
-        if (pq->queue[index].priority >= pq->queue[parent].priority) {
+        if (pq->queue[index].priority > pq->queue[parent].priority) {
             break;
         }
 
