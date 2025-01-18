@@ -4,6 +4,14 @@ This project is a simple **Hospital Management System** developed in **C**, crea
 
 ---
 
+## Key Features
+
+- **Efficient Searching**: The system employs multiple data structures to ensure fast and reliable data searches. For instance, doctors are organized in a binary search tree by specialization, while patients are stored in a hash table for quick retrieval based on their ID.
+- **Emergency Case Management**: Emergency cases are handled via a priority queue, guaranteeing that critical cases are addressed with urgency.
+- **Appointment Scheduling**: Appointment slots can be managed and reserved for patients, streamlining the process of patient care and doctor availability.
+
+---
+
 ## Features
 
 ### 1. Patient Management
@@ -19,26 +27,25 @@ This project is a simple **Hospital Management System** developed in **C**, crea
 
 ### 3. Emergency Case Management
 - **Add Emergency Case**: Users can add new emergency cases with a **description** and **priority** (where lower numbers represent higher priority). Each emergency case is linked to an existing patient.
-- **View Emergency Cases**: View active emergency cases sorted by priority.
+- **View Emergency Cases**: Allows users to view all active emergency cases sorted by their priority level, ensuring urgent cases are handled promptly.
 
 ### 4. Appointment Management
-- **Add Appointment**: The system allows users to add available appointment slots for specific doctors, enabling better management of patients' appointments.
-
+- **Add Appointment**: Users can schedule available appointment slots for specific doctors, ensuring organized management of patients' appointments and minimizing scheduling conflicts.
 ---
 
 ## Data Structures Used
-- **Linked Lists**: Used for managing lists of doctors and patients.
-- **Binary Search Tree (BST)**: Used to organize doctors based on their specialization, allowing for efficient searching and insertion.
+- **Linked Lists**: Employed to manage dynamic lists of doctors and patients. These lists provide flexibility in data manipulation, ensuring efficient memory usage and allowing for quick insertion and deletion of elements.
+- **Binary Search Tree (BST)**: Used to organize doctors by their specialization, enabling efficient searching, insertion, and deletion of records. This structure allows for fast lookups based on specialization.
 - **Hash Table**: A hash table is used to store and retrieve patient records efficiently.
-- **Priority Queue**: A priority queue is used to manage emergency cases, ensuring that the most critical cases are prioritized.
+- **Priority Queue**: A priority queue is used to manage emergency cases, ensuring that cases with higher urgency are prioritized and processed first.
 
 ---
 
 ## Functional Overview
 - The system provides an interactive **menu-based interface** that allows users to:
-  - Add, delete, and search for patients and doctors.
-  - Manage emergency cases by viewing and adding them with priority levels.
-  - 
+  - Add, delete, and search for patient and doctor records.
+  - Manage and prioritize emergency cases based on urgency.
+  - Schedule and manage appointments for doctors, improving overall appointment organization and patient management.
   
 - **Efficient Searching**: Utilizes various data structures to provide fast searching and management of data (e.g., doctors are organized in a binary search tree by specialization, and patients are stored in a hash table for quick lookups).
 
