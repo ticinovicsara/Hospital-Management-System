@@ -1,4 +1,5 @@
 #include <stdio.h>
+#include <string.h>
 #include "../Headers/emergency.h"
 #include "../Headers/help-functions.h"
 #include "../Headers/patient.h"
@@ -48,6 +49,20 @@ void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht){
                     printf("        %d              %s              %s\n", topCase.priority, topCase.patientId, topCase.description);
                     printf("   ---------------------------------------------------------------\n");
                 }
+
+                char input[5];
+                do{
+                    printf("\n\nRijesi ovaj slucaj? (y/n): ");
+                    scanf(" %s", input);
+
+                    if(strcmp(input, "y") == 0){
+                        dequeue(pq);
+                        printf("\n\nSlucaj rijesen.\n");
+                        break;
+                    }
+                    else if(strcmp(input, "n") == 0) { break; }
+                }while(stringIsValid(input));
+
                 PressAnyKey();
                 clearScreen();
                 break;

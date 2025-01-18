@@ -32,7 +32,6 @@ void showDoctorMenu(SpecializationNodePtr root){
             case 3:
                 clearScreen();
                 SearchDoctorBy(root);
-                getchar();
                 break;
 
             case 4:
@@ -88,7 +87,8 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 capitalizeName(name);
                 capitalizeName(surname);
 
-                DoctorPtr doctor = SearchDoctorByName(root, name, surname);
+                DoctorPtr doctor = NULL;
+                SpecializationNodePtr specializationNode = SearchDoctorAndSpecialization(root, name, surname, &doctor);
                 if(!doctor){
                     clearScreen();
                     printf("Doktor '%s %s' nije pronadjen\n", name, surname);
@@ -98,7 +98,7 @@ static void SearchDoctorBy(SpecializationNodePtr root){
                 printf("\n\n     --------------------------------------------------------------------------\n");
                 printf("\tSPECIJALIZACIJA\t\tIME\t    PREZIME\t    DOSTUPNI TERMINI\n");
                 printf("     --------------------------------------------------------------------------\n");
-                printf("\t%-23s %-11s %-15s %-5d\n\n\n", root->specialization, doctor->name, doctor->surname, doctor->availableAppointments);
+                printf("\t%-23s %-11s %-15s %-5d\n\n\n", specializationNode->specialization, doctor->name, doctor->surname, doctor->availableAppointments);
 
                 printf("\n     --------------------------------------------------------------------------\n");
                 printf("\tPACIJENTI\t\tTERMIN PREGLEDA\t\tRAZLOG\n");

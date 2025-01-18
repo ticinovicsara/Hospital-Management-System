@@ -273,20 +273,29 @@ void getNumberInput(char* input) {
 
     do {
         printf("Unesite ID: ");
-        fgets(input, 10, stdin);
+        if (fgets(input, 10, stdin) == NULL) {
+            clearScreen();
+            printf("Unos nije broj, pokusajte ponovo.\n\n");
+            continue;
+        }
 
         input[strcspn(input, "\n")] = '\0';
 
         validInput = 1;
-        for (int i = 0; input[i] != '\0' && input[i] != '\n'; i++) {
-            if (!isdigit(input[i])) {
+        for (int i = 0; input[i] != '\0'; i++) {
+            if (!isdigit((unsigned char)input[i])) {
                 validInput = 0;
                 break;
             }
         }
 
-        if (!validInput) {
+        if (strlen(input) == 0 || !validInput) {
+            clearScreen();
             printf("Unos nije broj, pokusajte ponovo.\n\n");
+
+            int c;
+            while ((c = getchar()) != '\n' && c != EOF) {}
+            validInput = 0;
         }
     } while (!validInput);
 }

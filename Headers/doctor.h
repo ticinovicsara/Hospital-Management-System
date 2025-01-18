@@ -31,6 +31,7 @@ SpecializationNodePtr BalanceTree(SpecializationNodePtr root);
 SpecializationNodePtr InsertDoctor(SpecializationNodePtr root, char* specialization, char* name, char* surname, int available_appointments);
 SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname);
 SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, const char* specialization);
+SpecializationNodePtr SearchDoctorAndSpecialization(SpecializationNodePtr root, const char* name, const char* surname, DoctorPtr* foundDoctor);
 DoctorPtr SearchDoctorByName(SpecializationNodePtr root, const char* name, const char* surname);
 
 void AddDoctor(SpecializationNodePtr* root);

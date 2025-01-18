@@ -133,6 +133,28 @@ SpecializationNodePtr SearchDoctorBySpecialization(SpecializationNodePtr root, c
     }
 }
 
+SpecializationNodePtr SearchDoctorAndSpecialization(SpecializationNodePtr root, const char* name, const char* surname, DoctorPtr* foundDoctor) {
+    if (!root) {
+        *foundDoctor = NULL;
+        return NULL;
+    }
+
+    SpecializationNodePtr result = SearchDoctorAndSpecialization(root->left, name, surname, foundDoctor);
+    if (*foundDoctor) return result;
+
+    DoctorPtr currentDoctor = root->doctors;
+    while (currentDoctor != NULL) {
+        if (strcmp(currentDoctor->name, name) == 0 && strcmp(currentDoctor->surname, surname) == 0) {
+            *foundDoctor = currentDoctor;
+            return root;
+        }
+        currentDoctor = currentDoctor->next;
+    }
+
+    return SearchDoctorAndSpecialization(root->right, name, surname, foundDoctor);
+}
+
+
 SpecializationNodePtr DeleteDoctor(SpecializationNodePtr root, const char* name, const char* surname){
     if (!root) {
         return NULL;

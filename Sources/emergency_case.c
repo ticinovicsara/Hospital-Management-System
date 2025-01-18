@@ -3,11 +3,14 @@
 #include <stdio.h>
 #include "../Headers/emergency.h"
 
+static void downheap(PriorityQueue* pq, int index);
+static void upheap(PriorityQueue* pq, int index);
+
 void initializeQueue(PriorityQueue* pq) {
     pq->size = 0;
 }
 
-void upheap(PriorityQueue* pq, int index) {
+static void upheap(PriorityQueue* pq, int index) {
     while (index > 0) {
         int parent = (index - 1) / 2;
         if (pq->queue[index].priority >= pq->queue[parent].priority) {
@@ -24,7 +27,6 @@ void upheap(PriorityQueue* pq, int index) {
 
 void enqueue(PriorityQueue* pq, EmergencyCase newCase) {
     if (pq->size >= MAX_QUEUE_SIZE) {
-        printf("Red je pun, ne moze se dodati novi hitan slucaj.\n");
         return;
     }
 
@@ -34,7 +36,7 @@ void enqueue(PriorityQueue* pq, EmergencyCase newCase) {
 }
 
 
-void downheap(PriorityQueue* pq, int index) {
+static void downheap(PriorityQueue* pq, int index) {
     int leftChild, rightChild, smallest;
 
     while (2 * index + 1 < pq->size) {

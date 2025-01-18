@@ -18,9 +18,7 @@ typedef struct _priorityQueue{
 
 void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht);
 void initializeQueue(PriorityQueue* pq);
-void upheap(PriorityQueue* pq, int index);
 void enqueue(PriorityQueue* pq, EmergencyCase newCase);
-void downheap(PriorityQueue* pq, int index);
 EmergencyCase dequeue(PriorityQueue* pq);
 EmergencyCase peek(PriorityQueue* pq);
 
