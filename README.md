@@ -21,6 +21,9 @@ This project is a simple **Hospital Management System** developed in **C**, crea
 - **Add Emergency Case**: Users can add new emergency cases with a **description** and **priority** (where lower numbers represent higher priority). Each emergency case is linked to an existing patient.
 - **View Emergency Cases**: View active emergency cases sorted by priority.
 
+### 4. Appointment Management
+- **Add Appointment**: The system allows users to add available appointment slots for specific doctors, enabling better management of patients' appointments.
+
 ---
 
 ## Data Structures Used
@@ -35,6 +38,7 @@ This project is a simple **Hospital Management System** developed in **C**, crea
 - The system provides an interactive **menu-based interface** that allows users to:
   - Add, delete, and search for patients and doctors.
   - Manage emergency cases by viewing and adding them with priority levels.
+  - 
   
 - **Efficient Searching**: Utilizes various data structures to provide fast searching and management of data (e.g., doctors are organized in a binary search tree by specialization, and patients are stored in a hash table for quick lookups).
 
@@ -60,7 +64,3 @@ This project is a simple **Hospital Management System** developed in **C**, crea
 3. To run the project, type command:
    ```bash
    ./hospital
-
-
-
-
