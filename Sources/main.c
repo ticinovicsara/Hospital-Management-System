@@ -69,8 +69,7 @@ int main(){
                 printf("\nByee!\n");
                 free(pq);
                 FreeAllResources(hash_table, root);
-                exit(0);
-                break;
+                return 0;;
             default:
                 clearScreen();
                 printf("Neispravan unos, pokusajte ponovo.\n");
@@ -78,6 +77,4 @@ int main(){
                 break;
         }
     }
-    
-    return 0;
 }
