@@ -67,18 +67,17 @@ int main(){
                 break;
             case 0:
                 printf("\nByee!\n");
+                free(pq);
+                FreeAllResources(hash_table, root);
                 exit(0);
                 break;
             default:
                 clearScreen();
                 printf("Neispravan unos, pokusajte ponovo.\n");
-                printf("Pritisnite bilo sto za nastavak...\n");
-                getchar();
+                PressAnyKey();
                 break;
         }
     }
-
-    free(pq);
-    free(root);
+    
     return 0;
 }
