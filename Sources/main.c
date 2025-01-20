@@ -67,8 +67,7 @@ int main(){
                 break;
             case 0:
                 printf("\nByee!\n");
-                free(pq);
-                FreeAllResources(hash_table, root);
+                FreeAllResources(hash_table, root, pq);
                 return 0;;
             default:
                 clearScreen();

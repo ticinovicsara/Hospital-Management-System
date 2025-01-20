@@ -13,8 +13,10 @@ static void FreeNodeList(NodePosition node);
 static void FreePatient(Patientptr patient);
 static void FreeMedicalRecords(RecordPtr record);
 
-void FreeAllResources(HashTable* ht, SpecializationNodePtr root) {
+void FreeAllResources(HashTable* ht, SpecializationNodePtr root, PriorityQueue* pq) {
     FreeHashTable(ht);
+
+    free(pq);
 
     FreeSpecializationTree(root);
 }
@@ -50,11 +52,18 @@ static void FreeSpecializationTree(SpecializationNodePtr root) {
 static void FreeDoctor(DoctorPtr doctor) {
     if (doctor == NULL) return;
 
-    FreeNodeList(doctor->patients); 
+    if (doctor->patients != NULL) {
+        FreeNodeList(doctor->patients);
+        doctor->patients = NULL; 
+    }
 
-    FreeAppointmentTree(doctor->appointments);
+    if (doctor->appointments != NULL) {
+        FreeAppointmentTree(doctor->appointments);
+        doctor->appointments = NULL;
+    }
 
     free(doctor);
+    doctor = NULL;
 }
 
 static void FreeAppointmentTree(AppointmentNodePtr root) {
@@ -67,15 +76,18 @@ static void FreeAppointmentTree(AppointmentNodePtr root) {
     free(root);
 }
 
-
 static void FreeNodeList(NodePosition node) {
     while (node != NULL) {
         NodePosition temp = node;
 
-        FreePatient(node->patient);
+        if (node->patient != NULL) {
+            FreePatient(node->patient);
+            node->patient = NULL;
+        }
 
         node = node->next;
         free(temp);
+        temp = NULL;
     }
 }
 

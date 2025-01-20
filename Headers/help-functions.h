@@ -42,5 +42,5 @@ void Input(char* message, char* input, char* role);
 void InputReason(char* message, char* input, char* role);
 void InputNumberBetween(char* message, int* priority, int min, int max);
 
-void FreeAllResources(HashTable* ht, SpecializationNodePtr root);
+void FreeAllResources(HashTable* ht, SpecializationNodePtr root, PriorityQueue* pq);
 #endif

@@ -1,5 +1,5 @@
-John,Doe,01-01-1990,Flu,01-02-2020,Slight fever and cough;Cold,15-12-2021,Runny nose and sore throat
-Jane,Smith,15-03-1985,Asthma,10-10-2010,Chronic respiratory condition
-Alice,Johnson,22-07-1992,Diabetes,05-11-2015,Type 2 diabetes;High cholesterol,12-12-2020,High blood pressure
-Bob,Brown,10-10-1980,Heart disease,20-08-2018,Chest pain and irregular heartbeat
-Charlie,Davis,05-05-2000,Allergy,12-07-2019,Seasonal pollen allergy
+John,Doe,01.01.1990,Flu,01-02-2020,Slight fever and cough;Cold,15-12-2021,Runny nose and sore throat
+Jane,Smith,15.03.1985,Asthma,10-10-2010,Chronic respiratory condition
+Alice,Johnson,22.07.1992,Diabetes,05-11-2015,Type 2 diabetes;High cholesterol,12-12-2020,High blood pressure
+Bob,Brown,10.10.1980,Heart disease,20-08-2018,Chest pain and irregular heartbeat
+Charlie,Davis,05.05.2000,Allergy,12-07-2019,Seasonal pollen allergy
