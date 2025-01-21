@@ -61,6 +61,9 @@ void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht){
                         break;
                     }
                     else if(strcmp(input, "n") == 0) { break; }
+                    else{
+                        printf("\nUnesite 'y' ili 'n'\n");
+                    }
                 }while(stringIsValid(input));
 
                 PressAnyKey();
@@ -76,6 +79,7 @@ void showEmergencyCaseMenu(PriorityQueue* pq, HashTable* ht){
                 return;
             default:
                 clearScreen();
+                getchar();
                 printf("Neispravan unos, pokusajte ponovo.\n");
                 break;
         }

@@ -48,6 +48,7 @@ void showDoctorMenu(SpecializationNodePtr root){
                 return;
 
             default:
+                clearScreen();
                 printf("Neispravan unos, unesite ponovno\n\n");
                 break;
 

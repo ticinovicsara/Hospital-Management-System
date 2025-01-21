@@ -5,6 +5,8 @@
 #include <stdlib.h>
 #include <stdio.h>
 
+#define SAFE_FREE(ptr) if (ptr) { free(ptr); ptr = NULL; }
+
 static void FreeHashTable(HashTable* ht);
 static void FreeSpecializationTree(SpecializationNodePtr root);
 static void FreeDoctor(DoctorPtr doctor);
@@ -16,7 +18,9 @@ static void FreeMedicalRecords(RecordPtr record);
 void FreeAllResources(HashTable* ht, SpecializationNodePtr root, PriorityQueue* pq) {
     FreeHashTable(ht);
 
-    free(pq);
+    if (pq) {
+        free(pq);
+    }
 
     FreeSpecializationTree(root);
 }
@@ -28,9 +32,8 @@ static void FreeHashTable(HashTable* ht) {
         FreeNodeList(ht->buckets[i]);
     }
 
-    free(ht->buckets);
-
-    free(ht);
+    SAFE_FREE(ht->buckets);
+    SAFE_FREE(ht);
 }
 
 static void FreeSpecializationTree(SpecializationNodePtr root) {
@@ -46,7 +49,7 @@ static void FreeSpecializationTree(SpecializationNodePtr root) {
         FreeDoctor(temp);
     }
 
-    free(root);
+    SAFE_FREE(root);
 }
 
 static void FreeDoctor(DoctorPtr doctor) {
@@ -62,8 +65,7 @@ static void FreeDoctor(DoctorPtr doctor) {
         doctor->appointments = NULL;
     }
 
-    free(doctor);
-    doctor = NULL;
+    SAFE_FREE(doctor);
 }
 
 static void FreeAppointmentTree(AppointmentNodePtr root) {
@@ -72,8 +74,7 @@ static void FreeAppointmentTree(AppointmentNodePtr root) {
     FreeAppointmentTree(root->left);
     FreeAppointmentTree(root->right);
 
-    free(root->appointment.patientID);
-    free(root);
+    SAFE_FREE(root);
 }
 
 static void FreeNodeList(NodePosition node) {
@@ -86,8 +87,7 @@ static void FreeNodeList(NodePosition node) {
         }
 
         node = node->next;
-        free(temp);
-        temp = NULL;
+        SAFE_FREE(temp);
     }
 }
 
@@ -98,13 +98,13 @@ static void FreePatient(Patientptr patient) {
 
     FreeMedicalRecords(patient->checkups);
 
-    free(patient);
+    SAFE_FREE(patient);
 }
 
 static void FreeMedicalRecords(RecordPtr record) {
     while (record != NULL) {
         RecordPtr temp = record;
         record = record->next;
-        free(temp);
+        SAFE_FREE(temp);
     }
 }
